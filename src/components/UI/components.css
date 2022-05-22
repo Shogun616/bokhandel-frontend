@@ -1,0 +1,191 @@
+.body {
+    margin: 0;
+    font-family: 'Viga', sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+.InputDiv {
+    background-color: #6dcf37;
+    height: 30px;
+    width: 300px;
+    padding: 1px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+}
+
+.inputArea {
+    width: 180px;
+    height: 58px;
+    float: right;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    font-size: 10pt;
+    font-weight: 10;
+}
+
+.inputField {
+    width: 140px;
+    height: 25px;
+    float: right;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    font-size: 10pt;
+    font-weight: 10;
+}
+
+.inputLabel {
+    color: white;
+    font-size: 15pt;
+    position: absolute;
+    left: 10px;
+    bottom: -13px;
+}
+
+.inputHelp {
+    font-size: 4pt;
+}
+
+.secondary-Btn {
+    border: 2px solid;
+    border-image-source: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    border-image-slice: 1;
+    color: #3b5360;
+}
+
+.primary-Btn {
+    background: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    color: #ffffff;
+    border: none;
+    align-content: center;
+    text-align: center;
+}
+
+.primary-Btn:hover {
+    color: white;
+}
+
+.btn {
+    position: relative;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    height: 40px;
+    width: 150px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.btn:hover {
+    box-shadow: none;
+}
+
+.logotype-black {
+    height: 50px;
+    width: 35px;
+    padding-bottom: 10px;
+}
+
+.topRow,
+.bottomRow {
+    width: 100%;
+    height: 45px;
+    padding-top: 10px;
+}
+
+.topRow {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: start;
+}
+.Profile-Pic-Info-box {
+    position: relative;
+    top: 43px;
+    left: 45px;
+}
+
+.topRow h6,
+.bottomRow h6 {
+    margin: 10px;
+}
+
+h6 {
+    padding: 6px;
+}
+.tasks {
+    color: white;
+}
+
+.bottomRow {
+    background: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+}
+
+.ProfileImage {
+    width: 70px !important;
+    height: 70px !important;
+    background-color: grey;
+    border-radius: 50px;
+    /* position: absolute; */
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.boxNav {
+    width: 250px;
+    height: 75px;
+    background: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    position: absolute;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.boxBody {
+    width: 250px;
+    height: 270px;
+    background: #f3f3f3;
+    opacity: 0.9;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.CompanyInfo {
+    position: relative;
+    top: 120px;
+    text-align: center;
+    width: 100%;
+}
+
+#infoBtn {
+    padding: 6px;
+    position: absolute;
+    left: 35%;
+}
+
+.form-control-sm,
+.fa-search:before {
+    border-radius: 0;
+    background-color: white;
+    border: 1px solid #00a2ff;
+}
+
+.form-control-sm {
+    border-left: none;
+    border-radius: 0;
+    background-color: white;
+}
+
+.fa-search:before {
+    color: #00a2ff;
+    padding: 6.5px;
+    border-right: none;
+    margin-right: -5px;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+}

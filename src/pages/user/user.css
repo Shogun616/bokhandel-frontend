@@ -1,1 +1,31 @@
+.create-container{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+.headline {
+    color: #3b5360;
+    font-size: 14pt;
+}
 
+.create-form {
+    position: center;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    align-items: center;
+}
+
+.create-btn-holder {
+    display: flex;
+    flex-flow: wrap-reverse;
+    margin-top: 10px;
+    height: 60px;
+    justify-content: space-between;
+}
