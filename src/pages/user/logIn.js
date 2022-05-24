@@ -1,22 +1,15 @@
 import React, {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
+import {Link} from "react-router-dom";
+import './user.css';
 
 class LogIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            address: "",
-            phone: "",
             username: "",
-            email: "",
-            password: "",
-            shoppingCart:{
-                price:0.0,
-                qty:0
-            }
+            password: ""
         }
     }
 
@@ -39,17 +32,8 @@ class LogIn extends Component {
 
     handleCancel = () => {
         this.setState({
-            firstName: "",
-            lastName: "",
-            address: "",
-            phone: "",
             username: "",
-            email: "",
-            password: "",
-            shoppingCart:{
-                price:0.0,
-                qty:0
-            }
+            password: ""
         });
     };
 
@@ -62,8 +46,8 @@ class LogIn extends Component {
                             <h3 className="headline">Logga in här</h3>
                             <InputField
                                 type="text"
-                                name={"email"}
-                                labeltext="e-post"
+                                name={"username"}
+                                labeltext="användarnamn"
                                 onChange={this.handleChange}
                             />
                             <InputField
@@ -75,10 +59,17 @@ class LogIn extends Component {
                             <div
                                 className="create-btn-holder">
                                 <button onClick={this.handleSubmit} className="btn primary-Btn text-light">SKAPA</button>
-                                <button onClick={this.handleCancel} className="btn secondary-Btn text-light">AVBRYT</button>
-                                {/*<Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>*/}
+                                <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
+                        <div className="forgot-link-container">
+                            <Link to="/registeraKund">
+                                <h1 className="forgot-link">Ny Kund</h1>
+                            </Link>
+                            <Link to="/registeraAdmin">
+                                <h1 className="forgot-link">Ny Admin</h1>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

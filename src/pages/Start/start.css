@@ -1,0 +1,25 @@
+.bg-picture {
+    background-image: url("/public/Media/images/registrering.jpg");
+    height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.greeting {
+    background: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    color: white;
+    padding: 30px;
+    margin: 0;
+    z-index: 2;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.start-page-container {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.spacer {
+    padding: 20px;
+}
