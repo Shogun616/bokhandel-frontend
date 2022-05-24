@@ -8,6 +8,10 @@ import SignUpEmployee from "./pages/user/signUpEmployee";
 import Start from "./pages/Start/start";
 import AddBook from "./pages/book/addBook";
 import AddBooksToCart from "./pages/shoppingCart/addBooksToCart";
+import UpdateCartItem from "./pages/shoppingCart/updateCartItem";
+import DeleteBooksFromCart from "./pages/shoppingCart/deleteBooksFromCart";
+import DeleteCartItem from "./pages/shoppingCart/DeleteCartItem";
+import AddOrder from "./pages/order/addOrder";
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
                 <Route path={'/start'} element={<Start />}/>
                 <Route path={'/laggTillBok'} elemet={<AddBook />}/>
                 <Route path={'/laggTillBokIVarukrogen'} element={<AddBooksToCart />}/>
+                <Route path={'/tillökaAntaBocker'} element={<UpdateCartItem />}/>
+                <Route path={'/minskaAntalBocker'} element={<DeleteBooksFromCart />}/>
+                <Route path={'/taBort Varukorgen'} element={<DeleteCartItem />}/>
+                <Route path={'/skapaOrder'} element={<AddOrder />}/>
             </Routes>
         </Router>
     </div>

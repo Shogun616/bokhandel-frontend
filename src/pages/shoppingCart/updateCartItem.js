@@ -66,3 +66,5 @@ class UpdateCartItem extends Component {
         )
     }
 }
+
+export default UpdateCartItem

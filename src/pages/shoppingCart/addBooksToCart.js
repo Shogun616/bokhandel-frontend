@@ -22,7 +22,7 @@ class AddBooksToCart extends Component {
         await api.post(`shoppingcart/addbooks/bookid/{bookid}/username/{username}/{qty}`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.history.push("/");
+                this.props.history.push("/skapaOrder");
             })
             .catch(error => {
                 console.log(error)
