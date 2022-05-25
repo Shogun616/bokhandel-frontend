@@ -24,9 +24,10 @@ class SignUpEmployee extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        await api.post(`employee/signup`, this.state)
+        await api.post(`user/signup/employee`, this.state)
             .then(response => {
                 this.setState(response.data);
+                console.log(response.data);
                 this.props.history.push("/");
             })
             .catch(error => {
@@ -75,6 +76,12 @@ class SignUpEmployee extends Component {
                                 type="text"
                                 name={"phone"}
                                 labeltext="Telefonnummer"
+                                onChange={this.handleChange}
+                            />
+                            <InputField
+                                type="text"
+                                name={"username"}
+                                labeltext="Användarnamn"
                                 onChange={this.handleChange}
                             />
                             <InputField

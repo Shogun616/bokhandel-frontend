@@ -29,7 +29,7 @@ class SignUpCustomer extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        await api.post(`customer/signup`, this.state)
+        await api.post(`user/signup/customer`, this.state)
             .then(response => {
                 this.setState(response.data);
                 this.props.history.push("/");
@@ -84,6 +84,12 @@ class SignUpCustomer extends Component {
                                 type="text"
                                 name={"phone"}
                                 labeltext="Telefon"
+                                onChange={this.handleChange}
+                            />
+                            <InputField
+                                type="text"
+                                name={"username"}
+                                labeltext="Användarnamn"
                                 onChange={this.handleChange}
                             />
                             <InputField

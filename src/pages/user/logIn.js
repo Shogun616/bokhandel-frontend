@@ -20,7 +20,7 @@ class LogIn extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        await api.post(`customer/signup`, this.state)
+        await api.post(`user/login`, this.state)
             .then(response => {
                 this.setState(response.data);
                 this.props.history.push("/");
