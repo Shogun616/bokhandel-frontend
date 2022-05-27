@@ -1,7 +1,7 @@
 import {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import './book.css'
 
 class AddBook extends Component {
@@ -42,7 +42,8 @@ class AddBook extends Component {
         await api.post(`book/addbook`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.history.push("/");
+                alert("Boken är nu Inlagt i databasen.");
+                this.props.navigate("/start");
             })
             .catch(error => {
                 console.log(error)
@@ -131,4 +132,9 @@ class AddBook extends Component {
     }
 }
 
-export default AddBook
+function Navigate(props){
+    let navigate = useNavigate();
+    return <AddBook {...props} navigate={navigate}/>
+}
+
+export default Navigate

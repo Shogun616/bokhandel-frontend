@@ -1,6 +1,6 @@
 import {Component} from "react";
 import api from "../../components/service/api";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import InputField from "../../components/UI/InputFieldText";
 import './user.css';
 
@@ -32,7 +32,7 @@ class SignUpCustomer extends Component {
         await api.post(`user/signup/customer`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.useNavigate.push("/registeringsBekraftelse");
+                this.props.navigate("/registeringsBekraftelse");
             })
             .catch(error => {
                 console.log(error)
@@ -122,4 +122,9 @@ class SignUpCustomer extends Component {
     }
 }
 
-export default SignUpCustomer
+function Navigate(props){
+    let navigate = useNavigate();
+    return <SignUpCustomer {...props} navigate={navigate}/>
+}
+
+export default Navigate

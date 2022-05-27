@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import './user.css';
 
 class LogIn extends Component {
@@ -23,7 +23,7 @@ class LogIn extends Component {
         await api.post(`user/login`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.useNavigate.push("/start");
+                this.props.navigate("/start");
             })
             .catch(error => {
                 console.log(error)
@@ -69,4 +69,9 @@ class LogIn extends Component {
     }
 }
 
-export default LogIn
+function Navigate(props){
+    let navigate = useNavigate();
+    return <LogIn {...props} navigate={navigate}/>
+}
+
+export default Navigate

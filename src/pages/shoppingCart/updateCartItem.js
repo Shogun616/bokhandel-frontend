@@ -1,8 +1,7 @@
 import {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
-import {Link} from "react-router-dom";
-
+import {Link, useNavigate} from "react-router-dom";
 
 class UpdateCartItem extends Component {
     constructor(props) {
@@ -23,7 +22,7 @@ class UpdateCartItem extends Component {
         await api.put(`shoppingcart/updateCartItem/{cartid}/quantity/{qty}`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.history.push("/");
+                this.props.navigate("/skapaOrder");
             })
             .catch(error => {
                 console.log(error)
@@ -59,7 +58,7 @@ class UpdateCartItem extends Component {
                             <div
                                 className="create-btn-holder">
                                 <button onClick={this.handleSubmit} className="btn primary-Btn text-light">BEKRÄFTA</button>
-                                <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
+                                <Link to={"/skapaOrder"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
                     </div>
@@ -69,4 +68,9 @@ class UpdateCartItem extends Component {
     }
 }
 
-export default UpdateCartItem
+function Navigate(props){
+    let navigate = useNavigate();
+    return <UpdateCartItem {...props} navigate={navigate}/>
+}
+
+export default Navigate

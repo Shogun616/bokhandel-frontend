@@ -1,7 +1,7 @@
 import {Component, useId} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 class AddOrder extends Component {
     constructor(props) {
@@ -31,7 +31,7 @@ class AddOrder extends Component {
         await api.post(`orders/createorder/userid/{userid}`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.history.push("/");
+                this.props.navigate("/orderBekraftelse");
             })
             .catch(error => {
                 console.log(error)
@@ -80,10 +80,13 @@ class AddOrder extends Component {
                             </div>
                         </form>
                         <div className="forgot-link-container">
-                            <Link to="/tillökaAntaBocker">
-                                <h1 className="forgot-link">Ändra</h1>
+                            <Link to="/tillokaAntaBocker">
+                                <h1 className="forgot-link">+</h1>
                             </Link>
-                            <Link to="/tillökaAntaBocker">
+                            <Link to="/minskaAntalBocker">
+                                <h1 className="forgot-link">-</h1>
+                            </Link>
+                            <Link to="/taBortVarukorg">
                                 <h1 className="forgot-link">Ta Bort</h1>
                             </Link>
                         </div>
@@ -94,4 +97,9 @@ class AddOrder extends Component {
     }
 }
 
-export default AddOrder
+function Navigate(props){
+    let navigate = useNavigate();
+    return <AddOrder {...props} navigate={navigate}/>
+}
+
+export default Navigate

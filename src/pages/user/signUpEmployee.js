@@ -1,7 +1,7 @@
 import {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 class SignUpEmployee extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class SignUpEmployee extends Component {
         await api.post(`user/signup/employee`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.useNavigate.push("/registeringsBekraftelse");
+                this.props.navigate("/registeringsBekraftelse");
             })
             .catch(error => {
                 console.log(error)
@@ -107,4 +107,10 @@ class SignUpEmployee extends Component {
         )
     }
 }
-export default SignUpEmployee
+
+function Navigate(props){
+    let navigate = useNavigate();
+    return <SignUpEmployee {...props} navigate={navigate}/>
+}
+
+export default Navigate

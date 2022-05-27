@@ -1,7 +1,7 @@
 import {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import './../book/book.css'
 
 class AddBooksToCart extends Component {
@@ -24,7 +24,7 @@ class AddBooksToCart extends Component {
         await api.post(`shoppingcart/addbooks/bookid/{bookid}/username/{username}/{qty}`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.history.push("/skapaOrder");
+                this.props.navigate("/skapaOrder");
             })
             .catch(error => {
                 console.log(error)
@@ -71,4 +71,9 @@ class AddBooksToCart extends Component {
     }
 }
 
-export default AddBooksToCart
+function Navigate(props){
+    let navigate = useNavigate();
+    return <AddBooksToCart {...props} navigate={navigate}/>
+}
+
+export default Navigate

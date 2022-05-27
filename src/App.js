@@ -28,7 +28,7 @@ function App() {
                 <Route path={'/start'} element={<Start />}/>
                 <Route path={'/laggTillBok'} element={<AddBook />}/>
                 <Route path={'/laggTillBokIVarukrogen'} element={<AddBooksToCart />}/>
-                <Route path={'/tillökaAntaBocker'} element={<UpdateCartItem />}/>
+                <Route path={'/tillokaAntaBocker'} element={<UpdateCartItem />}/>
                 <Route path={'/minskaAntalBocker'} element={<DeleteBooksFromCart />}/>
                 <Route path={'/tillökaAntaBocker'} element={<DeleteCartItem />}/>
                 <Route path={'/taBortVarukorg'} element={<DeleteCartItem />}/>
