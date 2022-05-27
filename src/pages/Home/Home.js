@@ -18,10 +18,7 @@ function Home(){
                 <header className={"masthead text-center text-dark"}>
                     <div className={"masthead-content"}>
                         <div>
-                            <h1 className={"masthead-heading"}>. . .</h1>
-                            <h1 className={"masthead-heading"}>
-                                <span className={"ShayaBlue-Text"}>.</span>
-                            </h1>
+                            <h1 className={"masthead-heading"}>Denna projekt gjordes som en del av examensarbete 2022</h1>
                         </div>
                         <div className={"textBoxHeading"}>
                             <p className={"textHeading"}>
@@ -29,6 +26,7 @@ function Home(){
                             </p>
                             <center>
                                 <a className={"btn primary-Btn"} href={"/loggaIn"}>LOGGA IN</a>
+                                <a className={"btn primary-Btn"} href={"/registeraKund"}>Registera</a>
                             </center>
                         </div>
                     </div>

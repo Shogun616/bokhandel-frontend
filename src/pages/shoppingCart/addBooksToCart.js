@@ -8,7 +8,9 @@ class AddBooksToCart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            bookId: '',
+            username: '',
+            qty: 0
         }
     }
 
@@ -31,7 +33,9 @@ class AddBooksToCart extends Component {
 
     handleCancel = () => {
         this.setState({
-
+            bookId: '',
+            username: '',
+            qty: 0
         });
     };
 
@@ -50,8 +54,8 @@ class AddBooksToCart extends Component {
                             />
                             <InputField
                                 type="text"
-                                name={"userName"}
-                                labeltext="AnvändarNamne"
+                                name={"username"}
+                                labeltext="AnvändarNamn"
                                 onChange={this.handleChange}
                             />
                             <div

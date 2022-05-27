@@ -27,8 +27,7 @@ class SignUpEmployee extends Component {
         await api.post(`user/signup/employee`, this.state)
             .then(response => {
                 this.setState(response.data);
-                console.log(response.data);
-                this.props.history.push("/");
+                this.props.useNavigate.push("/registeringsBekraftelse");
             })
             .catch(error => {
                 console.log(error)

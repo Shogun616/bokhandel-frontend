@@ -32,7 +32,7 @@ class SignUpCustomer extends Component {
         await api.post(`user/signup/customer`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.history.push("/");
+                this.props.useNavigate.push("/registeringsBekraftelse");
             })
             .catch(error => {
                 console.log(error)
@@ -110,6 +110,11 @@ class SignUpCustomer extends Component {
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
+                        <div className="forgot-link-container">
+                            <Link to="/registeraAdmin">
+                                <h1 className="forgot-link">Ny Admin</h1>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

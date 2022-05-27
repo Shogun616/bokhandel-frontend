@@ -1,70 +1,47 @@
-import {Component} from "react";
+import {useEffect, useState} from "react";
 import api from "../../components/service/api";
-import InputField from "../../components/UI/InputFieldText";
-import {Link} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
+function DeleteCartItem(){
 
-class DeleteCartItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    const [error, setError] = useState(false);
+    const [shoppingCart, setShoppingCart] = useState(null);
+    const navigate = useNavigate();
+    const {shoppingCartId} = useParams();
 
-        }
+    useEffect(() => {
+        if(shoppingCartId && shoppingCartId !=="")
+            api.get(`Company/${shoppingCartId}`)
+                .then((response) => response.data)
+                .then(setShoppingCart)
+                .catch(setError)
+    }, []);
+
+    function deleteShoppingCart() {
+        api.delete(`shoppingcart/removecartItem/${shoppingCartId}`)
+            .then(() => {
+                alert("Varukorgen är nu Borttaget!");
+                setShoppingCart(null)
+                navigate("/start");
+            });
     }
 
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-    };
+    if(error) return <pre>{JSON.stringify(error, null, 2)}</pre>
+    if(!shoppingCart) return "No Data Found";
 
-    handleSubmit = async (event) => {
-        event.preventDefault();
-
-        await api.delete(`shoppingcart/removecartItem/{id}`, this.state)
-            .then(response => {
-                this.setState(response.data);
-                this.props.history.push("/");
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    };
-
-    handleCancel = () => {
-        this.setState({
-
-        });
-    };
-
-    render() {
-        return(
-            <div className="window-container">
-                <div className="create-container">
-                    <div className="frostedGlass">
-                        <form className="create-form" onSubmit={this.handleSubmit}>
-                            <h3 className="headline">Ange Bokens Id och ditt användarnamn</h3>
-                            <InputField
-                                type="text"
-                                name={"bookId"}
-                                labeltext="BokId"
-                                onChange={this.handleChange}
-                            />
-                            <InputField
-                                type="text"
-                                name={"userName"}
-                                labeltext="AnvändarNamne"
-                                onChange={this.handleChange}
-                            />
-                            <div
-                                className="create-btn-holder">
-                                <button onClick={this.handleSubmit} className="btn primary-Btn text-light">BEKRÄFTA</button>
-                                <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
-                            </div>
-                        </form>
-                    </div>
+    return (
+        <div className="page-container">
+            <div className={"frostedGlass"}>
+                <h3 className="headline"> Varning!</h3>
+                <h5> Bortagningen av varukorgen är permament!</h5>
+                <h5>Vad vänligen dubbelkolla att det som ska tas bort är korrekt vald</h5>
+                <div className={"login-btn-holder"}>
+                    <button  onClick={deleteShoppingCart} className="btn primary-Btn text-light">TA BORT</button>
+                    <Link to={`/`} className="btn secondary-Btn text-dark">AVBRYT</Link>
                 </div>
             </div>
-        )
-    }
+        </div>
+    );
 }
 
 export default DeleteCartItem

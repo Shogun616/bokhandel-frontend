@@ -8,7 +8,8 @@ class UpdateCartItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            cartid: this.props.match.params.cartid,
+            qty: 0
         }
     }
 
@@ -31,7 +32,8 @@ class UpdateCartItem extends Component {
 
     handleCancel = () => {
         this.setState({
-
+            cartid: this.props.match.params.cartid,
+            qty: 0
         });
     };
 
@@ -41,17 +43,17 @@ class UpdateCartItem extends Component {
                 <div className="create-container">
                     <div className="frostedGlass">
                         <form className="create-form" onSubmit={this.handleSubmit}>
-                            <h3 className="headline">Ange Bokens Id och ditt användarnamn</h3>
+                            <h3 className="headline">Justera antal böcker här.</h3>
                             <InputField
                                 type="text"
-                                name={"bookId"}
-                                labeltext="BokId"
+                                name={"cartid"}
+                                labeltext="varukorgsId"
                                 onChange={this.handleChange}
                             />
                             <InputField
                                 type="text"
-                                name={"userName"}
-                                labeltext="AnvändarNamne"
+                                name={"qty"}
+                                labeltext="Mängd"
                                 onChange={this.handleChange}
                             />
                             <div

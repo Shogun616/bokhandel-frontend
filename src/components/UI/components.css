@@ -16,6 +16,17 @@
     position: relative;
 }
 
+.InputDiv2 {
+    background-color: #6dcf37;
+    height: 60px;
+    width: 300px;
+    padding: 1px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+}
+
 .inputArea {
     width: 180px;
     height: 58px;
@@ -50,37 +61,56 @@
     font-size: 4pt;
 }
 
-.secondary-Btn {
+.primaryButton {
+    position: relative;
+    background: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    height: 22px;
+    width: 77px;
+    font-size: 6pt;
+    color: white;
+    cursor: pointer;
+    padding-bottom: 15px;
+    border-radius: 0;
+    z-index: 1;
+}
+
+.primaryButton:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.primaryButton :disabled:hover {
+    opacity: 0.5;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.secondaryButton  {
+    position: relative;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border: 2px solid;
     border-image-source: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
     border-image-slice: 1;
     color: #3b5360;
-}
-
-.primary-Btn {
-    background: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
-    color: #ffffff;
-    border: none;
-    align-content: center;
-    text-align: center;
-}
-
-.primary-Btn:hover {
-    color: white;
-}
-
-.btn {
-    position: relative;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    height: 40px;
-    width: 150px;
-    font-size: 1em;
+    height: 20px;
+    width: 75px;
+    font-size: 6pt;
     cursor: pointer;
-    font-weight: bold;
-    border-radius: 0;
+    padding-bottom: 15px;
 }
 
-.btn:hover {
+.secondaryButton:focus:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.secondaryButton:hover {
+    background: none !important;
+}
+.secondaryButton:focus:active {
+    outline: none !important;
+    border: none !important;
     box-shadow: none;
 }
 

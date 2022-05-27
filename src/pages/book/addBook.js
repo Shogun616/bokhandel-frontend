@@ -39,7 +39,7 @@ class AddBook extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        await api.post(`employee/signup`, this.state)
+        await api.post(`book/addbook`, this.state)
             .then(response => {
                 this.setState(response.data);
                 this.props.history.push("/");

@@ -41,7 +41,7 @@ class DeleteBooksFromCart extends Component {
                 <div className="create-container">
                     <div className="frostedGlass">
                         <form className="create-form" onSubmit={this.handleSubmit}>
-                            <h3 className="headline">Ange Bokens Id och ditt användarnamn</h3>
+                            <h3 className="headline">Minimera antal böcker här</h3>
                             <InputField
                                 type="text"
                                 name={"bookId"}
@@ -50,8 +50,8 @@ class DeleteBooksFromCart extends Component {
                             />
                             <InputField
                                 type="text"
-                                name={"userName"}
-                                labeltext="AnvändarNamne"
+                                name={"username"}
+                                labeltext="AnvändarNamn"
                                 onChange={this.handleChange}
                             />
                             <div

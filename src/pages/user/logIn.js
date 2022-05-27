@@ -23,7 +23,7 @@ class LogIn extends Component {
         await api.post(`user/login`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.history.push("/");
+                this.props.useNavigate.push("/start");
             })
             .catch(error => {
                 console.log(error)
@@ -51,7 +51,7 @@ class LogIn extends Component {
                                 onChange={this.handleChange}
                             />
                             <InputField
-                                type="text"
+                                type="password"
                                 name={"password"}
                                 labeltext="Lösenord"
                                 onChange={this.handleChange}
@@ -62,14 +62,6 @@ class LogIn extends Component {
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
-                        <div className="forgot-link-container">
-                            <Link to="/registeraKund">
-                                <h1 className="forgot-link">Ny Kund</h1>
-                            </Link>
-                            <Link to="/registeraAdmin">
-                                <h1 className="forgot-link">Ny Admin</h1>
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </div>

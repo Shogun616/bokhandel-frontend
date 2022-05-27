@@ -12,6 +12,9 @@ import UpdateCartItem from "./pages/shoppingCart/updateCartItem";
 import DeleteBooksFromCart from "./pages/shoppingCart/deleteBooksFromCart";
 import DeleteCartItem from "./pages/shoppingCart/DeleteCartItem";
 import AddOrder from "./pages/order/addOrder";
+import ConfirmRegister from "./pages/confirm/confirmRegister";
+import ConfirmOrder from "./pages/confirm/confirmOrder";
+import './App.css';
 
 function App() {
   return (
@@ -23,12 +26,15 @@ function App() {
                 <Route path={'/registeraKund'} element={<SignUpCustomer />}/>
                 <Route path={'/registeraAdmin'} element={<SignUpEmployee />}/>
                 <Route path={'/start'} element={<Start />}/>
-                <Route path={'/laggTillBok'} elemet={<AddBook />}/>
+                <Route path={'/laggTillBok'} element={<AddBook />}/>
                 <Route path={'/laggTillBokIVarukrogen'} element={<AddBooksToCart />}/>
                 <Route path={'/tillökaAntaBocker'} element={<UpdateCartItem />}/>
                 <Route path={'/minskaAntalBocker'} element={<DeleteBooksFromCart />}/>
-                <Route path={'/taBort Varukorgen'} element={<DeleteCartItem />}/>
+                <Route path={'/tillökaAntaBocker'} element={<DeleteCartItem />}/>
+                <Route path={'/taBortVarukorg'} element={<DeleteCartItem />}/>
                 <Route path={'/skapaOrder'} element={<AddOrder />}/>
+                <Route path={'/registeringsBekraftelse'} element={<ConfirmRegister />}/>
+                <Route path={'/orderBekraftelse'} element={<ConfirmOrder />}/>
             </Routes>
         </Router>
     </div>

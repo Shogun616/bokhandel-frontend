@@ -1,14 +1,23 @@
-import {Component} from "react";
+import {Component, useId} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
 import {Link} from "react-router-dom";
-
 
 class AddOrder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userId: ''
+            shippingMethod: "Dhl",
+            shippingAddress: "styrbjörnsvägen 14",
+            payment:
+                {
+                    bankName: "swedbank",
+                    cardNumber: "1253647889",
+                    expiryMonth: 6,
+                    expiryYear: 2025,
+                    cvc: 123,
+                    holderName: "Biniam Haile"
+                }
         }
     }
 
@@ -31,7 +40,17 @@ class AddOrder extends Component {
 
     handleCancel = () => {
         this.setState({
-
+            shippingMethod: "",
+            shippingAddress: "",
+            payment:
+                {
+                    bankName: "",
+                    cardNumber: "",
+                    expiryMonth: 6,
+                    expiryYear: 2025,
+                    cvc: 123,
+                    holderName: ""
+                }
         });
     };
 
@@ -50,8 +69,8 @@ class AddOrder extends Component {
                             />
                             <InputField
                                 type="text"
-                                name={"userName"}
-                                labeltext="AnvändarNamne"
+                                name={"username"}
+                                labeltext="AnvändarNamn"
                                 onChange={this.handleChange}
                             />
                             <div
@@ -60,6 +79,14 @@ class AddOrder extends Component {
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
+                        <div className="forgot-link-container">
+                            <Link to="/tillökaAntaBocker">
+                                <h1 className="forgot-link">Ändra</h1>
+                            </Link>
+                            <Link to="/tillökaAntaBocker">
+                                <h1 className="forgot-link">Ta Bort</h1>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
