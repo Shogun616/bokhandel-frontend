@@ -3,8 +3,14 @@ import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './user.css';
+import qs from 'qs';
+
 
 class LogIn extends Component {
+
+
+
+
     constructor(props) {
         super(props);
         this.state = {
@@ -12,6 +18,13 @@ class LogIn extends Component {
             password: ""
         }
     }
+    // data = { 'bar': 123 };
+    // options = {
+    //     method: 'POST',
+    //     headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    //     data: qs.stringify(this.data),
+    //
+    // };
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -20,10 +33,18 @@ class LogIn extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        await api.post(`user/login`, this.state)
+        await api.post('user/login?username='+this.state.username+'&password='+this.state.password,
+            this.state)
+
             .then(response => {
-                this.setState(response.data);
-                this.props.navigate("/start");
+                console.log(response.data)
+                //if (response.data.accessToken) {
+                localStorage.setItem("jwt", JSON.stringify(response.data.access_token))
+                localStorage.setItem("jwt_refresh", JSON.stringify(response.data.refresh_token))
+
+                     this.setState(response.data);
+                     this.props.navigate("/start");
+
             })
             .catch(error => {
                 console.log(error)
