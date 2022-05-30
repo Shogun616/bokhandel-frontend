@@ -4,8 +4,8 @@ import InputField from "../../components/UI/InputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './user.css';
 
-class LogIn extends Component {
 
+class LogInAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,9 +29,8 @@ class LogIn extends Component {
                 //if (response.data.accessToken) {
                 localStorage.setItem("jwt", JSON.stringify(response.data.access_token))
                 localStorage.setItem("jwt_refresh", JSON.stringify(response.data.refresh_token))
-
-                     this.setState(response.data);
-                     this.props.navigate("/start");
+                this.setState(response.data);
+                this.props.navigate("/startAdmin");
 
             })
             .catch(error => {
@@ -80,7 +79,7 @@ class LogIn extends Component {
 
 function Navigate(props){
     let navigate = useNavigate();
-    return <LogIn {...props} navigate={navigate}/>
+    return <LogInAdmin {...props} navigate={navigate}/>
 }
 
 export default Navigate

@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from "../../components/NavBar/Header";
 
-function Start() {
+
+function StartAdmin() {
     return (
         <div>
             <Header />
@@ -9,10 +10,10 @@ function Start() {
                 <div className={"body-content"}>
                     <header className={"masthead text-center text-dark"}>
                         <div className={"masthead-content"}>
-                                <center>
-                                    <h2>köp din bok här</h2>
-                                    <a className={"btn primary-Btn"} href={"/laggTillBok"}>BESTÄLL</a>
-                                </center>
+                            <center>
+                                <h2>Lägg till din första bok</h2>
+                                <a className={"btn primary-Btn"} href={"/laggTillBok"}>SKAPA+</a>
+                            </center>
                         </div>
                         <div className={"bg-circle-3 bg-circle"}/>
                         <div className={"moon-container"}>
@@ -36,4 +37,4 @@ function Start() {
     );
 }
 
-export default Start;
+export default StartAdmin

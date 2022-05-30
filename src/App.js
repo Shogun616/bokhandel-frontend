@@ -15,6 +15,8 @@ import AddOrder from "./pages/order/addOrder";
 import ConfirmRegister from "./pages/confirm/confirmRegister";
 import ConfirmOrder from "./pages/confirm/confirmOrder";
 import './App.css';
+import StartAdmin from "./pages/Start/startAdmin";
+import LogInAdmin from "./pages/user/logInAdmin";
 
 function App() {
   return (
@@ -23,9 +25,11 @@ function App() {
             <Routes>
                 <Route path={'/'} element={<Home />}/>
                 <Route path={'/loggaIn'} element={<LogIn />}/>
+                <Route path={'/loggaInADMIN'} element={<LogInAdmin />}/>
                 <Route path={'/registeraKund'} element={<SignUpCustomer />}/>
                 <Route path={'/registeraAdmin'} element={<SignUpEmployee />}/>
                 <Route path={'/start'} element={<Start />}/>
+                <Route path={'/startAdmin'} element={<StartAdmin />}/>
                 <Route path={'/laggTillBok'} element={<AddBook />}/>
                 <Route path={'/laggTillBokIVarukrogen'} element={<AddBooksToCart />}/>
                 <Route path={'/tillokaAntaBocker'} element={<UpdateCartItem />}/>
