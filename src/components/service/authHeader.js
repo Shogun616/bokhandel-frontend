@@ -1,8 +1,13 @@
 export default function authHeader() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    //const jwt = JSON.parse(localStorage.getItem('jwt'));
     // if (user && user.access_token) {
-        return { Authorization: 'Bearer ' + user.access_token };
+        return { Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('jwt')),
+                'Content-Type': 'multipart/form-data'
+        };
     // } else {
         return {};
     // }
 }
+
+
+

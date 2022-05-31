@@ -17,19 +17,24 @@ class AddBook extends Component {
             language: "",
             category: "",
             price: 0.0,
-            authors:[
-                {
-                    firstName: "",
-                    lastName: ""
-                }
-            ],
-            publisher:{
-                name: ""
-            },
-            stock:{
-                quantity: 0,
-                inStock: true
-            }
+            authorFirstName: "",
+            authorLastName:"",
+            publisherName: "",
+            stockQuantity: 0,
+            stockInStock: true
+            // authors:[
+            //     {
+            //         firstName: "",
+            //         lastName: ""
+            //     }
+            // ],
+            // publisher:{
+            //     name: ""
+            // },
+            // stock:{
+            //     quantity: 0,
+            //     inStock: true
+            // }
         }
     }
 
@@ -39,11 +44,25 @@ class AddBook extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
+        const ObjToSend= {
+            isbn13:this.state.isbn13,title:this.state.title,publishingDate:this.state.publishingDate,weight:parseInt(this.state.weight),
+            pages:parseInt(this.state.pages),language:this.state.language,category:this.state.category,price:parseInt(this.state.price),
+            authors:[{firstName:this.state.authorFirstName,lastName:this.state.authorLastName}],
+            publisher:{name:this.state.publisherName},
+            stock:{quantity:parseInt(this.state.stockQuantity),inStock:this.state.stockInStock}
 
-        await api.post(`book/addbook`, this.state,
-            {Headers: 'Bearer ' + JSON.parse(localStorage.getItem('jwt'))} )
+        }
+
+        //console.log(ObjToSend)
+
+
+        await api.post(`book/addbook`, ObjToSend,
+            {headers:{ 'Authorization':'Bearer '+JSON.parse(localStorage.getItem('jwt'))}}
+            )
             .then(response => {
+                console.log(response.data);
                 this.setState(response.data);
+
                 alert("Boken är nu Inlagt i databasen.");
                 this.props.navigate("/startAdmin");
             })
@@ -62,19 +81,24 @@ class AddBook extends Component {
             language: "",
             category: "",
             price: 0.0,
-            authors:[
-                {
-                    firstName: "",
-                    lastName: ""
-                }
-            ],
-            publisher:{
-                name: ""
-            },
-            stock:{
-                quantity: 0,
-                inStock: true
-            }
+            authorFirstName: "",
+            authorLastName:"",
+            publisherName: "",
+            stockQuantity: 0,
+            stockInStock: true
+            // authors:[
+            //     {
+            //         firstName: "",
+            //         lastName: ""
+            //     }
+            // ],
+            // publisher:{
+            //     name: ""
+            // },
+            // stock:{
+            //     quantity: 0,
+            //     inStock: true
+            // }
         });
     };
 
@@ -104,13 +128,13 @@ class AddBook extends Component {
                                 onChange={this.handleChange}
                             />
                             <InputField
-                                type="text"
+                                type="number"
                                 name={"weight"}
                                 labeltext="Vikt"
                                 onChange={this.handleChange}
                             />
                             <InputField
-                                type="text"
+                                type="number"
                                 name={"pages"}
                                 labeltext="Sidor"
                                 onChange={this.handleChange}
@@ -128,7 +152,7 @@ class AddBook extends Component {
                                 onChange={this.handleChange}
                             />
                             <InputField
-                                type="text"
+                                type="number"
                                 name={"price"}
                                 labeltext="Pris"
                                 onChange={this.handleChange}
@@ -136,30 +160,37 @@ class AddBook extends Component {
                             <h3 className="headline">Författare</h3>
                             <InputField
                                 type="text"
-                                name={"firstName"}
+                                name={"authorFirstName"}
                                 labeltext="Förnamn"
                                 onChange={this.handleChange}
                             />
                             <InputField
                                 type="text"
-                                name={"lastName"}
+                                name={"authorLastName"}
                                 labeltext="Efternamn"
                                 onChange={this.handleChange}
                             />
-                            <h3 className="headline">Publiserare</h3>
+                            <h3 className="headline">Utgivare</h3>
                             <InputField
                                 type="text"
-                                name={"name"}
+                                name={"publisherName"}
                                 labeltext="Namn"
                                 onChange={this.handleChange}
                             />
                             <h3 className="headline">I lager</h3>
                             <InputField
-                                type="text"
-                                name={"quantity"}
+                                type="number"
+                                name={"stockQuantity"}
                                 labeltext="Mängd"
                                 onChange={this.handleChange}
                             />
+                            <InputField
+                                type="text"
+                                name={"stockInStock"}
+                                labeltext="På lager"
+                                onChange={this.handleChange}
+                            />
+
                             <div
                                 className="create-btn-holder">
                                 <button onClick={this.handleSubmit} className="btn primary-Btn text-light">SKAPA</button>
