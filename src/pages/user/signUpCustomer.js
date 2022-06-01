@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import api from "../../components/service/api";
 import {Link, useNavigate} from "react-router-dom";
 import InputField from "../../components/UI/InputFieldText";
@@ -111,7 +111,7 @@ class SignUpCustomer extends Component {
                             </div>
                         </form>
                         <div className="forgot-link-container">
-                            <Link to="/registeraAdmin">
+                            <Link to="/registera/admin">
                                 <h1 className="forgot-link">Ny Admin</h1>
                             </Link>
                         </div>

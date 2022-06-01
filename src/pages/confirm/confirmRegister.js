@@ -8,7 +8,7 @@ function ConfirmRegister() {
                 <div className="frostedGlass">
                     <form className="create-form">
                         <h1>Registrering slutförd</h1>
-                        <Link to={"/loggaIn"} className="btn secondary-Btn text-dark">Till Startsida</Link>
+                        <Link to={"/"} className="btn secondary-Btn text-dark">Till Hemsida</Link>
                     </form>
                 </div>
             </div>

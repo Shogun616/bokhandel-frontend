@@ -1,8 +1,7 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
 import {Link, useNavigate} from "react-router-dom";
-import authHeader from "../../components/service/authHeader";
 import './book.css'
 
 class AddBook extends Component {
@@ -22,19 +21,6 @@ class AddBook extends Component {
             publisherName: "",
             stockQuantity: 0,
             stockInStock: true
-            // authors:[
-            //     {
-            //         firstName: "",
-            //         lastName: ""
-            //     }
-            // ],
-            // publisher:{
-            //     name: ""
-            // },
-            // stock:{
-            //     quantity: 0,
-            //     inStock: true
-            // }
         }
     }
 
@@ -53,9 +39,6 @@ class AddBook extends Component {
 
         }
 
-        //console.log(ObjToSend)
-
-
         await api.post(`book/addbook`, ObjToSend,
             {headers:{ 'Authorization':'Bearer '+JSON.parse(localStorage.getItem('jwt'))}}
             )
@@ -64,7 +47,7 @@ class AddBook extends Component {
                 this.setState(response.data);
 
                 alert("Boken är nu Inlagt i databasen.");
-                this.props.navigate("/startAdmin");
+                this.props.navigate("/start/admin");
             })
             .catch(error => {
                 console.log(error)
@@ -86,19 +69,6 @@ class AddBook extends Component {
             publisherName: "",
             stockQuantity: 0,
             stockInStock: true
-            // authors:[
-            //     {
-            //         firstName: "",
-            //         lastName: ""
-            //     }
-            // ],
-            // publisher:{
-            //     name: ""
-            // },
-            // stock:{
-            //     quantity: 0,
-            //     inStock: true
-            // }
         });
     };
 
@@ -190,7 +160,6 @@ class AddBook extends Component {
                                 labeltext="På lager"
                                 onChange={this.handleChange}
                             />
-
                             <div
                                 className="create-btn-holder">
                                 <button onClick={this.handleSubmit} className="btn primary-Btn text-light">SKAPA</button>

@@ -12,6 +12,9 @@ function Home(){
                     <ul className={"navbar-nav ml-auto"}>
                         <li className={"nav-item active"}/>
                     </ul>
+                    <form className={"form-inline my-2 my-lg-0"}>
+                        <a className={"btn btn-outline-success my-2 my-sm-0 login-Btn"} href={"/login/admin"}>ADMIN</a>
+                    </form>
                 </div>
             </nav>
             <div className={"body-content"}>
@@ -25,8 +28,8 @@ function Home(){
                                 .
                             </p>
                             <center>
-                                <a className={"btn primary-Btn"} href={"/loggaIn"}>LOGGA IN</a>
-                                <a className={"btn primary-Btn"} href={"/registeraKund"}>Registera</a>
+                                <a className={"btn primary-Btn"} href={"/login"}>LOGGA IN</a>
+                                <a className={"btn primary-Btn"} href={"/registera/kund"}>Registera</a>
                             </center>
                         </div>
                     </div>

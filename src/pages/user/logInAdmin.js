@@ -30,7 +30,7 @@ class LogInAdmin extends Component {
                 localStorage.setItem("jwt", JSON.stringify(response.data.access_token))
                 localStorage.setItem("jwt_refresh", JSON.stringify(response.data.refresh_token))
                 this.setState(response.data);
-                this.props.navigate("/startAdmin");
+                this.props.navigate("/start/admin");
 
             })
             .catch(error => {
