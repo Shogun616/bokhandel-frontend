@@ -36,11 +36,10 @@ class AddBook extends Component {
             authors:[{firstName:this.state.authorFirstName,lastName:this.state.authorLastName}],
             publisher:{name:this.state.publisherName},
             stock:{quantity:parseInt(this.state.stockQuantity),inStock:this.state.stockInStock}
-
         }
 
         await api.post(`book/addbook`, ObjToSend,
-            {headers:{ 'Authorization':'Bearer '+JSON.parse(localStorage.getItem('jwt'))}}
+            {headers:{ 'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}}
             )
             .then(response => {
                 console.log(response.data);

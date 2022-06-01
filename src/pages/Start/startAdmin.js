@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Header from "../../components/NavBar/Header";
 import api from "../../components/service/api";
 import {Link} from "react-router-dom";
-import PrimaryButton from "../../components/UI/PrimaryButton";
 import {Table} from "semantic-ui-react";
+import PrimaryButton from "../../components/UI/PrimaryButton";
 
 function StartAdmin() {
 
@@ -25,13 +25,13 @@ function StartAdmin() {
     if(!book) return "No books found in the database";
 
     return (
-        <div>
+        <div className={"page-container"}>
             <Header />
-            <div className="frostedGlass">
+            <div className={"frostedGlass"}>
                 <div className="company-button-holder">
-                    <Link to={"/create"}>
-                        <PrimaryButton text={"SKAPA+"}/>
-                    </Link>
+                    <center>
+                        <a className={"btn primary-Btn"} href={"/laggTillBok"}>SKAPA+</a>
+                    </center>
                 </div>
                 <div className={"company-box-container"}>
                     <Table celled>
@@ -43,6 +43,9 @@ function StartAdmin() {
                                 <Table.HeaderCell>Sidor</Table.HeaderCell>
                                 <Table.HeaderCell>Språk</Table.HeaderCell>
                                 <Table.HeaderCell>Pris</Table.HeaderCell>
+                                <Table.HeaderCell>Författare</Table.HeaderCell>
+                                <Table.HeaderCell>Förlag</Table.HeaderCell>
+                                <Table.HeaderCell>Lagerstatus</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
@@ -55,12 +58,10 @@ function StartAdmin() {
                                         <Table.Cell>{data.pages}</Table.Cell>
                                         <Table.Cell>{data.language}</Table.Cell>
                                         <Table.Cell>{data.price}</Table.Cell>
-                                        <Table.Cell>
-                                            <Link to={``}>
-                                                <PrimaryButton text={"INFO"}/>
-                                            </Link>
-                                            {/*<PopupCompanyProfile />*/}
-                                        </Table.Cell>
+                                        <Table key={index}>{data.authors.map(author =>
+                                            <tr><td>{author.firstName} {author.lastName}</td></tr>)}</Table>
+                                        <Table.Cell>{data.publisher.name}</Table.Cell>
+                                        <Table.Cell>{data.stock.quantity}</Table.Cell>
                                     </Table.Row>
                                 )
                             })}
