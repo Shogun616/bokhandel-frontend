@@ -3,6 +3,7 @@ import Header from "../../components/NavBar/Header";
 import api from "../../components/service/api";
 import {Link} from "react-router-dom";
 import PrimaryButton from "../../components/UI/PrimaryButton";
+import {Table} from "semantic-ui-react";
 
 function StartAdmin() {
 
@@ -33,39 +34,38 @@ function StartAdmin() {
                     </Link>
                 </div>
                 <div className={"company-box-container"}>
-                    {/*<Table celled>*/}
-                    {/*    <Table.Header>*/}
-                    {/*        <Table.Row>*/}
-                    {/*            <Table.HeaderCell>Företagsnamn</Table.HeaderCell>*/}
-                    {/*            <Table.HeaderCell>organisationNummer</Table.HeaderCell>*/}
-                    {/*            <Table.HeaderCell>Gatuaddress</Table.HeaderCell>*/}
-                    {/*            <Table.HeaderCell>Postnummer</Table.HeaderCell>*/}
-                    {/*            <Table.HeaderCell>Stad</Table.HeaderCell>*/}
-                    {/*            <Table.HeaderCell>Företagstyp</Table.HeaderCell>*/}
-                    {/*            <Table.HeaderCell>Om Företaget</Table.HeaderCell>*/}
-                    {/*        </Table.Row>*/}
-                    {/*    </Table.Header>*/}
-                    {/*    <Table.Body>*/}
-                    {/*        {book.map((data, index) => {*/}
-                    {/*            return (*/}
-                    {/*                <Table.Row className="bottomRow" key={index}>*/}
-                    {/*                    <Table.Cell>{data.name}</Table.Cell>*/}
-                    {/*                    <Table.Cell>{data.organisationNumber}</Table.Cell>*/}
-                    {/*                    <Table.Cell>{data.street}</Table.Cell>*/}
-                    {/*                    <Table.Cell>{data.zipCode}</Table.Cell>*/}
-                    {/*                    <Table.Cell>{data.city}</Table.Cell>*/}
-                    {/*                    <Table.Cell>{data.companyTypeString}</Table.Cell>*/}
-                    {/*                    <Table.Cell>*/}
-                    {/*                        <Link to={`/companyProfile/${data.companyId}`}>*/}
-                    {/*                            <PrimaryButton text={"INFO"}/>*/}
-                    {/*                        </Link>*/}
-                    {/*                        /!*<PopupCompanyProfile />*!/*/}
-                    {/*                    </Table.Cell>*/}
-                    {/*                </Table.Row>*/}
-                    {/*            )*/}
-                    {/*        })}*/}
-                    {/*    </Table.Body>*/}
-                    {/*</Table>*/}
+                    <Table celled>
+                        <Table.Header>
+                            <Table.Row>
+                                <Table.HeaderCell>Titel</Table.HeaderCell>
+                                <Table.HeaderCell>Publiserad</Table.HeaderCell>
+                                <Table.HeaderCell>Vikt</Table.HeaderCell>
+                                <Table.HeaderCell>Sidor</Table.HeaderCell>
+                                <Table.HeaderCell>Språk</Table.HeaderCell>
+                                <Table.HeaderCell>Pris</Table.HeaderCell>
+                            </Table.Row>
+                        </Table.Header>
+                        <Table.Body>
+                            {book.map((data, index) => {
+                                return (
+                                    <Table.Row className="bottomRow" key={index}>
+                                        <Table.Cell>{data.title}</Table.Cell>
+                                        <Table.Cell>{data.publishingDate}</Table.Cell>
+                                        <Table.Cell>{data.weight}</Table.Cell>
+                                        <Table.Cell>{data.pages}</Table.Cell>
+                                        <Table.Cell>{data.language}</Table.Cell>
+                                        <Table.Cell>{data.price}</Table.Cell>
+                                        <Table.Cell>
+                                            <Link to={``}>
+                                                <PrimaryButton text={"INFO"}/>
+                                            </Link>
+                                            {/*<PopupCompanyProfile />*/}
+                                        </Table.Cell>
+                                    </Table.Row>
+                                )
+                            })}
+                        </Table.Body>
+                    </Table>
                 </div>
             </div>
             <footer className={"py-5"}>
