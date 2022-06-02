@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Header from "../../components/NavBar/Header";
 import api from "../../components/service/api";
-import {Link} from "react-router-dom";
 import {Table} from "semantic-ui-react";
-import PrimaryButton from "../../components/UI/PrimaryButton";
 
 function StartAdmin() {
 

@@ -9,8 +9,8 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.ShayaBlue-Text {
-    color: #9BD451;
+.iths-Text {
+    color: #4B0082;
 }
 
 article,
@@ -72,14 +72,6 @@ p {
     display: inline-block;
 }
 
-/* Vemasy text animering */
-/*.fadeIn {
-    opacity: 0;
-    animation-name: fadeIn;
-    animation-delay: 6s;
-    animation-duration: 9s;
-    animation-fill-mode: forwards;
-}*/
 .fadeIn {
     opacity: 0;
     animation-name: fadeIn;
@@ -97,9 +89,7 @@ p {
         opacity: 1;
     }
 }
-/* Vemasy text animering slut*/
 
-/* typwrite animation */
 .typewriteAnimation h2 {
     font-size: 2.5rem;
     overflow: hidden;
@@ -126,25 +116,6 @@ p {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
-
-/*.typewriteAnimation h2:nth-child(1) {
-    width: 17em;
-    -webkit-animation: type 2s steps(40, end);
-    animation: type 3s steps(40, end);
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-}
-
-.typewriteAnimation h2:nth-child(2) {
-    width: 16.5em;
-    opacity: 0;
-    -webkit-animation: type3 5s steps(20, end), blink 0.5s step-end infinite alternate;
-    animation: type2 3s steps(40, end), blink 0.5s step-end infinite alternate;
-    -webkit-animation-delay: 4s;
-    animation-delay: 3s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-}*/
 
 @keyframes type {
     0% {
@@ -218,7 +189,7 @@ p {
 
 /* nav */
 .navbar {
-    background: linear-gradient(90deg, #6dcf37 0%, #00a2ff 100%);
+    background: linear-gradient(90deg, #4B0082 0%, #f3f3f3 100%);
     min-height: 15vh;
     box-shadow: 0 18px 36px rgba(0, 0, 0, 0.25);
     width: 100%;
@@ -364,13 +335,13 @@ header.masthead .bg-circle-3 {
 /* knapp*/
 .secondary-Btn {
     border: 2px solid;
-    border-image-source: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    border-image-source: linear-gradient(270deg, #4B0082 0%, #f3f3f3 100%);
     border-image-slice: 1;
     color: #3b5360;
 }
 
 .primary-Btn {
-    background: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    background: linear-gradient(270deg, #4B0082 0%, #f3f3f3 100%);
     color: #ffffff;
     border: none;
     align-content: center;
@@ -410,7 +381,7 @@ header.masthead .bg-circle-3 {
 }
 
 .box-heading {
-    background: linear-gradient(134deg, #21a826 32.32%, #00b2ff 100%);
+    background: linear-gradient(134deg,  #4B0082 32.32%,  #f3f3f3 100%);
     height: 100%;
     width: 50%;
     float: left;
@@ -444,7 +415,7 @@ header {
     height: 100%;
     float: left;
     border: 2px solid;
-    border-image-source: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    border-image-source: linear-gradient(270deg, #4B0082  0%,  #f3f3f3 100%);
     border-image-slice: 1;
 }
 
@@ -477,7 +448,7 @@ header {
 }
 
 .inner_circle {
-    background-image: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    background-image: linear-gradient(270deg, #4B0082  0%, #f3f3f3 100%);
     content: '';
     position: absolute;
     top: -5px;
@@ -505,7 +476,7 @@ header {
 }
 
 .inner_circle_text {
-    background-image: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    background-image: linear-gradient(270deg, #4B0082  0%, #f3f3f3 100%);
     content: '';
     position: absolute;
     top: -5px;
@@ -538,7 +509,7 @@ header {
 }
 
 .inner_circle_middle {
-    background-image: linear-gradient(270deg, #6dcf37 0%, #00a2ff 100%);
+    background-image: linear-gradient(270deg, #4B0082  0%, #f3f3f3 100%);
     content: '';
     position: absolute;
     top: -5px;
@@ -645,7 +616,7 @@ header {
 }
 
 .flip-card-back {
-    background: linear-gradient( 358.35deg, #00a2ff 0.69%, rgba(255, 255, 255, 0) 98.83% ), #6dcf37;
+    background: linear-gradient( 358.35deg, #f3f3f3 0.69%, rgba(255, 255, 255, 0) 98.83% ), #4B0082;
     color: white;
     transform: rotate(180deg);
 }

@@ -7,9 +7,6 @@ import SignUpCustomer from "./pages/user/signUpCustomer";
 import SignUpEmployee from "./pages/user/signUpEmployee";
 import Start from "./pages/Start/start";
 import AddBook from "./pages/book/addBook";
-import AddBooksToCart from "./pages/shoppingCart/addBooksToCart";
-import UpdateCartItem from "./pages/shoppingCart/updateCartItem";
-import DeleteBooksFromCart from "./pages/shoppingCart/deleteBooksFromCart";
 import DeleteCartItem from "./pages/shoppingCart/DeleteCartItem";
 import AddOrder from "./pages/order/addOrder";
 import ConfirmRegister from "./pages/confirm/confirmRegister";
@@ -31,9 +28,6 @@ function App() {
                 <Route path={'/start'} element={<Start />}/>
                 <Route path={'/start/admin'} element={<StartAdmin />}/>
                 <Route path={'/laggTillBok'} element={<AddBook />}/>
-                <Route path={'/laggTillBokIVarukrogen'} element={<AddBooksToCart />}/>
-                <Route path={'/tillokaAntaBocker'} element={<UpdateCartItem />}/>
-                <Route path={'/minskaAntalBocker'} element={<DeleteBooksFromCart />}/>
                 <Route path={'/taBortVarukorg'} element={<DeleteCartItem />}/>
                 <Route path={'/skapaOrder'} element={<AddOrder />}/>
                 <Route path={'/registeringsBekraftelse'} element={<ConfirmRegister />}/>
