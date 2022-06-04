@@ -26,12 +26,12 @@ function StartAdmin() {
         <div className={"page-container"}>
             <Header />
             <div className={"frostedGlass"}>
-                <div className="company-button-holder">
+                <div className="start-button-holder">
                     <center>
                         <a className={"btn primary-Btn"} href={"/laggTillBok"}>SKAPA+</a>
                     </center>
                 </div>
-                <div className={"company-box-container"}>
+                <div className={"start-box-container"}>
                     <Table celled>
                         <Table.Header>
                             <Table.Row>
@@ -49,7 +49,7 @@ function StartAdmin() {
                         <Table.Body>
                             {book.map((data, index) => {
                                 return (
-                                    <Table.Row className="bottomRow" key={index}>
+                                    <Table.Row className="bottomRow text-light" key={index}>
                                         <Table.Cell>{data.title}</Table.Cell>
                                         <Table.Cell>{data.publishingDate}</Table.Cell>
                                         <Table.Cell>{data.weight}</Table.Cell>
@@ -57,7 +57,7 @@ function StartAdmin() {
                                         <Table.Cell>{data.language}</Table.Cell>
                                         <Table.Cell>{data.price}</Table.Cell>
                                         <Table key={index}>{data.authors.map(author =>
-                                            <tr><td>{author.firstName} {author.lastName}</td></tr>)}</Table>
+                                            <tr>{author.firstName} {author.lastName}</tr>)}</Table>
                                         <Table.Cell>{data.publisher.name}</Table.Cell>
                                         <Table.Cell>{data.stock.quantity}</Table.Cell>
                                     </Table.Row>

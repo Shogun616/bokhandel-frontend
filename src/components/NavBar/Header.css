@@ -1,6 +1,6 @@
 .container {
     position: relative;
-    background: linear-gradient(270deg, #4B0082 0%, #f3f3f3 100%);
+    background: linear-gradient(270deg, #4B0082 0%, #483D8B 100%);
     margin: 0;
     min-width: 100vw;
     max-width: 100vw;
@@ -16,7 +16,7 @@
 
 .navTitle{
     margin-left: 20px;
-    font-size: 3vh;
+    font-size: 5vh;
     font-weight: bold;
 }
 
@@ -41,7 +41,7 @@
     position: absolute;
     margin-right: 100px;
     overflow: auto;
-    background: linear-gradient(270deg, #4B0082 0%, #f3f3f3 100%);
+    background: linear-gradient(270deg, #4B0082 0%, #483D8B 100%);
 }
 
 .menulink-dropdown {

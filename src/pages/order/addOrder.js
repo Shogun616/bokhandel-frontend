@@ -7,17 +7,14 @@ class AddOrder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            shippingMethod: "Dhl",
-            shippingAddress: "styrbjörnsvägen 14",
-            payment:
-                {
-                    bankName: "swedbank",
-                    cardNumber: "1253647889",
-                    expiryMonth: 6,
-                    expiryYear: 2025,
-                    cvc: 123,
-                    holderName: "Biniam Haile"
-                }
+            shippingMethod: "",
+            shippingAddress: "",
+            paymentBankName: "",
+            paymentCardNumber: "",
+            paymentExpiryMonth: 0,
+            paymentExpiryYear: 0,
+            paymentCvc: 0,
+            paymentHolderName: ""
         }
     }
 
@@ -28,7 +25,15 @@ class AddOrder extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
-        await api.post(`orders/createorder/userid/{userid}`, this.state)
+        const ObjToSend= {
+            shippingMethod: this.state.shippingMethod, shippingAddress:this.state.shippingAddress,
+            payment:{bankName: this.state.paymentBankName, cardNumber: this.state.paymentCardNumber,
+            expiryMonth: this.state.paymentExpiryMonth, expiryYear: this.state.paymentExpiryYear,
+            cvc: this.state.paymentCvc, holderName: this.state.paymentHolderName}
+        }
+
+        await api.post('orders/createorder/username?username='+ localStorage.getItem("username"), ObjToSend,
+            {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 this.setState(response.data);
                 this.props.navigate("/orderBekraftelse");
@@ -60,36 +65,62 @@ class AddOrder extends Component {
                 <div className="create-container">
                     <div className="frostedGlass">
                         <form className="create-form" onSubmit={this.handleSubmit}>
-                            <h3 className="headline">Ange Bokens Id och ditt användarnamn</h3>
+                            <h3 className="headline">Fyll i transporteringsmetoden</h3>
                             <InputField
                                 type="text"
-                                name={"bookId"}
-                                labeltext="BokId"
+                                name={"shippingMethod"}
+                                labeltext="Transportering"
                                 onChange={this.handleChange}
                             />
                             <InputField
                                 type="text"
-                                name={"username"}
-                                labeltext="AnvändarNamn"
+                                name={"shippingAddress"}
+                                labeltext="Address"
+                                onChange={this.handleChange}
+                            />
+                            <h3 className="headline">Fyll i betalningsmetoden</h3>
+                            <InputField
+                                type="text"
+                                name={"paymentBankName"}
+                                labeltext="Banknamn"
+                                onChange={this.handleChange}
+                            />
+                            <InputField
+                                type="text"
+                                name={"paymentCardNumber"}
+                                labeltext="Kortnummer"
+                                onChange={this.handleChange}
+                            />
+                            <InputField
+                                type="text"
+                                name={"paymentExpiryMonth"}
+                                labeltext="Utgångsmånad"
+                                onChange={this.handleChange}
+                            />
+                            <InputField
+                                type="text"
+                                name={"paymentExpiryYear"}
+                                labeltext="Utgångsår"
+                                onChange={this.handleChange}
+                            />
+                            <InputField
+                                type="text"
+                                name={"paymentCvc"}
+                                labeltext="cvc"
+                                onChange={this.handleChange}
+                            />
+                            <InputField
+                                type="text"
+                                name={"paymentHolderName"}
+                                labeltext="Namn"
                                 onChange={this.handleChange}
                             />
                             <div
                                 className="create-btn-holder">
                                 <button onClick={this.handleSubmit} className="btn primary-Btn text-light">BEKRÄFTA</button>
-                                <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
+                                <Link to={"/start"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
-                        <div className="forgot-link-container">
-                            <Link to="/tillokaAntaBocker">
-                                <h1 className="forgot-link">+</h1>
-                            </Link>
-                            <Link to="/minskaAntalBocker">
-                                <h1 className="forgot-link">-</h1>
-                            </Link>
-                            <Link to="/taBortVarukorg">
-                                <h1 className="forgot-link">Ta Bort</h1>
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </div>

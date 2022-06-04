@@ -29,7 +29,7 @@ function App() {
                 <Route path={'/start/admin'} element={<StartAdmin />}/>
                 <Route path={'/laggTillBok'} element={<AddBook />}/>
                 <Route path={'/taBortVarukorg'} element={<DeleteCartItem />}/>
-                <Route path={'/skapaOrder'} element={<AddOrder />}/>
+                <Route path={'/skapa/order'} element={<AddOrder />}/>
                 <Route path={'/registeringsBekraftelse'} element={<ConfirmRegister />}/>
                 <Route path={'/orderBekraftelse'} element={<ConfirmOrder />}/>
             </Routes>

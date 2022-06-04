@@ -1,4 +1,4 @@
-.company-page-header {
+.start-page-header {
     z-index: 2;
     color: white;
     position: absolute;
@@ -6,7 +6,7 @@
     margin-left: 130px;
 }
 
-.company-container {
+.start-container {
     position: relative;
     display: flex;
     flex-flow: column;
@@ -19,7 +19,7 @@
     width: 100vw;
 }
 
-.company-button-holder {
+.start-button-holder {
     width: 50%;
     position: relative;
     display: flex;
@@ -31,7 +31,7 @@
     padding-bottom: 10px;
 }
 
-.company-box-container {
+.start-box-container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;

@@ -1,9 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
+
+    const navigate = useNavigate();
+    const [isLoggedin, setIsLoggedin] = useState(false);
+
+    function handleOnClick(){
+        localStorage.clear();
+        setIsLoggedin(false);
+        navigate("/");
+    }
+
     return (
         <div className={"container"}>
             <a className={"navbar-brand"} href={"/start"}>
@@ -23,11 +32,9 @@ function Header() {
                         <i className="fas fa-user-circle"/>
                     </div>
                     <div className="dropdown-menu menu-dropdown">
-                        <Link to="/">
                             <div className="dropdown-item menulink-dropdown">
-                                <i className="fas fa-sign-out-alt"/> LOGGA UT
+                                <i onClick={() => handleOnClick()} className="fas fa-sign-out-alt"/> LOGGA UT
                             </div>
-                        </Link>
                     </div>
                 </li>
             </ul>

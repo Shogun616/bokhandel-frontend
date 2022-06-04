@@ -26,7 +26,6 @@ function Start() {
             .catch(setError);
     }
 
-
     const handleQty = (val, id) => {
         let newBooks = books;
 
@@ -37,7 +36,6 @@ function Start() {
         setBooks(newBooks);
         //setNumberOfCopies(qtyIndex);
     };
-
 
     useEffect(() => {
         api.get(`book/getlistofbooks`,
@@ -54,8 +52,6 @@ function Start() {
             .catch(setError);
     }, []);
 
-
-
     if(loading) return <h1>Loading...</h1>
     if(error) return <pre>{JSON.stringify(error, null, 2)}</pre>
     if(!books) return "No books found in the database";
@@ -64,7 +60,7 @@ function Start() {
         <div className={"page-container"}>
             <Header />
             <div className={"frostedGlass"}>
-                <div className={"company-box-container"}>
+                <div className={"start-box-container"}>
                     <Table celled>
                         <Table.Header>
                             <Table.Row>
@@ -85,7 +81,7 @@ function Start() {
 
                             {books.map((book, index) => {
                                 return (
-                                    <Table.Row className="bottomRow" key={index}>
+                                    <Table.Row className="bottomRow text-light" key={index}>
                                         <Table.Cell>{book.isbn13}</Table.Cell>
                                         <Table.Cell>{book.title}</Table.Cell>
                                         <Table.Cell>{book.publishingDate}</Table.Cell>
@@ -93,8 +89,8 @@ function Start() {
                                         <Table.Cell>{book.pages}</Table.Cell>
                                         <Table.Cell>{book.language}</Table.Cell>
                                         <Table.Cell>{book.price}</Table.Cell>
-                                        <Table>{book.authors.map(author =>
-                                            <tr><td>{author.firstName} {author.lastName}</td></tr>)}</Table>
+                                        <Table.Cell>{book.authors.map(author =>
+                                            <tr>{author.firstName} {author.lastName}</tr>)}</Table.Cell>
                                         <Table.Cell>{book.publisher.name}</Table.Cell>
                                         <Table.Cell>{book.stock.quantity}</Table.Cell>
                                         <Table.Cell >
@@ -114,13 +110,18 @@ function Start() {
                                                 <option  value={9}>9</option>
                                                 <option  value={10}>10</option>
                                             </select>
-                                            <button onClick={() => handleOnCLick(book)} className="btn primary-Btn text-light">TILL VARUKORG</button>
+                                            <button onClick={() => handleOnCLick(book)} className="btn primary-Btn text-light">LÄGG TILL</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )
                             })}
                         </Table.Body>
                     </Table>
+                    <div className="start-button-holder">
+                        <center>
+                            <a className={"btn primary-Btn"} href={"/skapaOrder"}>Till Beställning</a>
+                        </center>
+                    </div>
                 </div>
             </div>
             <footer className={"py-5"}>

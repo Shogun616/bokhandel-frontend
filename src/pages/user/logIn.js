@@ -3,7 +3,6 @@ import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './user.css';
-import jwtDecode,{JwtPayload} from "jwt-decode";
 
 class LogIn extends Component {
 
