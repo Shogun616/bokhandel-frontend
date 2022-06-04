@@ -3,6 +3,7 @@ import api from "../../components/service/api";
 import InputField from "../../components/UI/InputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './user.css';
+import jwtDecode,{JwtPayload} from "jwt-decode";
 
 class LogIn extends Component {
 
@@ -29,6 +30,7 @@ class LogIn extends Component {
                 //if (response.data.accessToken) {
                 localStorage.setItem("jwt", JSON.stringify(response.data.access_token))
                 localStorage.setItem("jwt_refresh", JSON.stringify(response.data.refresh_token))
+                localStorage.setItem("username",this.state.username)
 
                      this.setState(response.data);
                      this.props.navigate("/start");
