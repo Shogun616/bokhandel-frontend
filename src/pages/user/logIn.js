@@ -26,7 +26,6 @@ class LogIn extends Component {
 
             .then(response => {
                 console.log(response.data)
-                //if (response.data.accessToken) {
                 localStorage.setItem("jwt", JSON.stringify(response.data.access_token))
                 localStorage.setItem("jwt_refresh", JSON.stringify(response.data.refresh_token))
                 localStorage.setItem("username",this.state.username)

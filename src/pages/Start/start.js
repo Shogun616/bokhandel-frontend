@@ -2,8 +2,11 @@ import Header from "../../components/NavBar/Header";
 import {Table} from "semantic-ui-react";
 import React, {useEffect, useRef, useState} from "react";
 import api from "../../components/service/api";
+import * as response from "autoprefixer";
+import {useNavigate} from "react-router-dom";
 
 function Start() {
+    const navigate = useNavigate();
 
     const [books, setBooks] = useState(null);
     const [loading, setLoading] = useState(null);
@@ -19,12 +22,26 @@ function Start() {
         /// paste in the url-> bookToSubmit.id   and bookToSubmit.qty and done!
         api.post('shoppingcart/addbooks?qty='+bookToSubmit.qty+'&username='+localStorage.getItem("username")+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
-            .then((response) => response.data)
-
-           // .then(setBooks)
-            //.then(() => setLoading(false))
+            .then(response => {
+                console.log(response.data)
+                localStorage.setItem("cartItemId", JSON.stringify(response.data.id))
+                localStorage.setItem("shoppingCartId",JSON.stringify(response.data.shoppingCart.id))
+            })
             .catch(setError);
+        if(response.data!==null) alert("Boken är nu Inlagt i varukorgen.")
     }
+    function deleteCartItem() {
+        api.delete('shoppingcart/removecartItem?cartItemId='+localStorage.getItem("cartItemId"),
+            {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
+            .then(() => {
+                alert("Boken är nu Borttaget!");
+               navigate("/start");
+            })
+    .catch(setError);
+    }
+
+
+
 
     const handleQty = (val, id) => {
         let newBooks = books;
@@ -111,6 +128,7 @@ function Start() {
                                                 <option  value={10}>10</option>
                                             </select>
                                             <button onClick={() => handleOnCLick(book)} className="btn primary-Btn text-light">LÄGG TILL</button>
+                                            <button onClick={() => deleteCartItem()} className="btn primary-Btn text-light">Ta bort</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )
@@ -119,7 +137,7 @@ function Start() {
                     </Table>
                     <div className="start-button-holder">
                         <center>
-                            <a className={"btn primary-Btn"} href={"/skapaOrder"}>Till Beställning</a>
+                            <a  className={"btn primary-Btn"} href={"/skapa/order"}>Till Beställning</a>
                         </center>
                     </div>
                 </div>
