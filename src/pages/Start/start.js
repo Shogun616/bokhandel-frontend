@@ -1,10 +1,15 @@
-import Header from "../../components/NavBar/Header";
+import Header from "../../components/navBar/Header";
 import {Table} from "semantic-ui-react";
 import React, {useEffect, useRef, useState} from "react";
 import api from "../../components/service/api";
+import Ball from "../../components/ball/Ball";
+import MascotBall from "../../components/ball/Mascotball";
+import * as response from "autoprefixer";
+import {useNavigate} from "react-router-dom";
 
 function Start() {
 
+    const navigate = useNavigate();
     const [books, setBooks] = useState(null);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(false);
@@ -19,10 +24,22 @@ function Start() {
         /// paste in the url-> bookToSubmit.id   and bookToSubmit.qty and done!
         api.post('shoppingcart/addbooks?qty='+bookToSubmit.qty+'&username='+localStorage.getItem("username")+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
-            .then((response) => response.data)
+            .then(response => {
+                console.log(response.data)
+                localStorage.setItem("cartItemId", JSON.stringify(response.data.id))
+                localStorage.setItem("shoppingCartId",JSON.stringify(response.data.shoppingCart.id))
+            })
+            .catch(setError);
+        if(response.data!==null) alert("Boken är nu Inlagt i varukorgen.")
+    }
 
-           // .then(setBooks)
-            //.then(() => setLoading(false))
+    function deleteCartItem() {
+        api.delete('shoppingcart/removecartItem?cartItemId='+localStorage.getItem("cartItemId"),
+            {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
+            .then(() => {
+                alert("Boken är nu Borttaget!");
+                navigate("/start");
+            })
             .catch(setError);
     }
 
@@ -36,6 +53,7 @@ function Start() {
         setBooks(newBooks);
         //setNumberOfCopies(qtyIndex);
     };
+
 
     useEffect(() => {
         api.get(`book/getlistofbooks`,
@@ -75,6 +93,8 @@ function Start() {
                                 <Table.HeaderCell>Förlag</Table.HeaderCell>
                                 <Table.HeaderCell>Lagerstatus</Table.HeaderCell>
                                 <Table.HeaderCell></Table.HeaderCell>
+                                <Table.HeaderCell></Table.HeaderCell>
+                                <Table.HeaderCell></Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
@@ -93,12 +113,13 @@ function Start() {
                                             <tr>{author.firstName} {author.lastName}</tr>)}</Table.Cell>
                                         <Table.Cell>{book.publisher.name}</Table.Cell>
                                         <Table.Cell>{book.stock.quantity}</Table.Cell>
-                                        <Table.Cell >
+                                        <Table.Cell>
                                             <select
-                                                onChange={(e) => handleQty(e.target.value, book.id)}
-                                                name={"qty"}
-                                            >
+                                            onChange={(e) => handleQty(e.target.value, book.id)}
+                                            name={"qty"}
+                                        >
                                                 <option >Antal</option>
+                                                <option  value={0}>0</option>
                                                 <option  value={1}>1</option>
                                                 <option  value={2}>2</option>
                                                 <option  value={3}>3</option>
@@ -110,7 +131,12 @@ function Start() {
                                                 <option  value={9}>9</option>
                                                 <option  value={10}>10</option>
                                             </select>
-                                            <button onClick={() => handleOnCLick(book)} className="btn primary-Btn text-light">LÄGG TILL</button>
+                                        </Table.Cell>
+                                        <Table.Cell >
+                                            <button onClick={() => handleOnCLick(book)} className="btn btn-outline-success my-2 my-sm-0 login-Btn">LÄGG TILL</button>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            <button onClick={() => deleteCartItem()} className="btn btn-outline-success my-2 my-sm-0 login-Btn">TA BORT</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )
@@ -119,9 +145,13 @@ function Start() {
                     </Table>
                     <div className="start-button-holder">
                         <center>
-                            <a className={"btn primary-Btn"} href={"/skapaOrder"}>Till Beställning</a>
+                            <a className={"btn primary-Btn"} href={"/skapa/order"}>Till Beställning</a>
                         </center>
                     </div>
+                    <MascotBall top="68%" right="1%" />
+                    <Ball className="green-ball" bottom="-40%" right="20%" />
+                    <Ball className="yellow-ball" left="15%" bottom="-10%" />
+                    <Ball className="blue-ball" right="13%" top="-5%" />
                 </div>
             </div>
             <footer className={"py-5"}>

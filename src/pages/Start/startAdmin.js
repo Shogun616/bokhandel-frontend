@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../../components/NavBar/Header";
+import Header from "../../components/navBar/Header";
 import api from "../../components/service/api";
 import {Table} from "semantic-ui-react";
 

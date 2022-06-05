@@ -3,6 +3,8 @@ import api from "../../components/service/api";
 import {Link, useNavigate} from "react-router-dom";
 import InputField from "../../components/UI/InputFieldText";
 import './user.css';
+import Mascotball from "../../components/ball/Mascotball";
+import Ball from "../../components/ball/Ball";
 
 class SignUpCustomer extends Component {
     constructor(props) {
@@ -117,6 +119,10 @@ class SignUpCustomer extends Component {
                         </div>
                     </div>
                 </div>
+                <Mascotball top="68%" right="1%" />
+                <Ball className="green-ball" top="8%" left="5%" />
+                <Ball className="yellow-ball" left="15%" bottom="20%" />
+                <Ball className="blue-ball" right="13%" top="-5%" />
             </div>
         )
     }

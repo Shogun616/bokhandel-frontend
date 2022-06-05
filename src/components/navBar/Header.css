@@ -2,7 +2,7 @@
     position: relative;
     background: linear-gradient(270deg, #4B0082 0%, #483D8B 100%);
     margin: 0;
-    min-width: 100vw;
+    min-width: 90vw;
     max-width: 100vw;
     display: flex;
     flex-flow: row nowrap;
