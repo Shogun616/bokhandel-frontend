@@ -13,6 +13,7 @@ function Start() {
     const [books, setBooks] = useState(null);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(false);
+    const [disabled, setDisabled] = useState(true);
 
     function handleOnCLick(book) {
         const bookToSubmit =
@@ -31,7 +32,7 @@ function Start() {
     }
 
     function deleteCartItem() {
-        api.delete('shoppingcart/removecartItem?cartItemId='+localStorage.getItem("cartItemId"),
+        api.delete('shoppingcart/removecartItem?cartItemId='+ localStorage.getItem("cartItemId"),
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(() => {
                 alert("Boken är nu Borttaget!");
@@ -43,14 +44,19 @@ function Start() {
     const handleQty = (val, id) => {
         let newBooks = books;
 
+        if (val === "Antal"){
+            setDisabled(true)
+        }
+        else if (val !== "Antal"){
+            setDisabled(false)
+        }
+
         newBooks[books.indexOf(books.find((b) => b.id === id))] = {
             ...books[books.indexOf(books.find((b) => b.id === id))],
             ...{ numOfCopies: val }
         };
         setBooks(newBooks);
-        //setNumberOfCopies(qtyIndex);
     };
-
 
     useEffect(() => {
         api.get(`book/getlistofbooks`,
@@ -114,8 +120,7 @@ function Start() {
                                             onChange={(e) => handleQty(e.target.value, book.id)}
                                             name={"qty"}
                                         >
-                                                <option >Antal</option>
-                                                <option  value={0}>0</option>
+                                                <option>Antal</option>
                                                 <option  value={1}>1</option>
                                                 <option  value={2}>2</option>
                                                 <option  value={3}>3</option>
@@ -129,10 +134,10 @@ function Start() {
                                             </select>
                                         </Table.Cell>
                                         <Table.Cell >
-                                            <button onClick={() => handleOnCLick(book)} className="btn primary-Btn">LÄGG TILL</button>
+                                            <button onClick={() => handleOnCLick(book)} disabled={disabled} className="btn primary-Btn">LÄGG TILL</button>
                                         </Table.Cell>
                                         <Table.Cell>
-                                            <button onClick={() => deleteCartItem()} className="btn primary-Btn">TA BORT</button>
+                                            <button onClick={() => deleteCartItem()} disabled={disabled} className="btn primary-Btn">TA BORT</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )

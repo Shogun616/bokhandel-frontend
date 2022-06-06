@@ -68,7 +68,7 @@ class LogInAdmin extends Component {
                             />
                             <div
                                 className="create-btn-holder">
-                                <button onClick={this.handleSubmit} className="btn primary-Btn text-light">LOGGA IN</button>
+                                <button onClick={this.handleSubmit} disabled={!this.state.username && !this.state.password} className="btn primary-Btn text-light">LOGGA IN</button>
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>

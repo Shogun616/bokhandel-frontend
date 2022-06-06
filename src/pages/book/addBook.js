@@ -163,7 +163,7 @@ class AddBook extends Component {
                             />
                             <div
                                 className="create-btn-holder">
-                                <button onClick={this.handleSubmit} className="btn primary-Btn text-light">SKAPA</button>
+                                <button onClick={this.handleSubmit} disabled={!this.state.name} className="btn primary-Btn text-light">SKAPA</button>
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>

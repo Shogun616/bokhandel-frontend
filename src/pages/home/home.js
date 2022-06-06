@@ -6,6 +6,7 @@ function Home(){
         <div>
             <nav className={"navbar navbar-expand-lg navbar-light bg-light"} >
                 <a className={"navbar-brand"} href={"/"}>
+                    <img className={"navLogo"} src={"/img.png"} alt={"ITHS logga"}/>
                     <span className={"navTitle"}>BOKHANDEL </span>
                 </a>
                 <div id={"navbarTooglerDemo03"} className={"navbar-collapse sticky-top collapse"}>

@@ -1,10 +1,44 @@
 .order-body {
-    display: flex;
+    display: initial;
     flex-flow: column;
     align-items: center;
-    width: 100%;
+    width: 10%;
     height: auto;
     background: #f3f3f3;
     opacity: 0.9;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    left: 500px;
+}
+
+.order-container{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+.headline {
+    color: #3b5360;
+    font-size: 14pt;
+}
+
+.order-form {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    align-items: center;
+}
+
+.order-btn-holder {
+    display: flex;
+    flex-flow: wrap-reverse;
+    margin-top: 10px;
+    height: 60px;
+    justify-content: space-between;
 }

@@ -2,9 +2,8 @@ import React, {Component, useState} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
-import Mascotball from "../../components/ball/Mascotball";
+import MascotBall from "../../components/ball/Mascotball";
 import Ball from "../../components/ball/Ball";
-import * as respone from "autoprefixer";
 
 class AddOrder extends Component {
     constructor(props) {
@@ -24,8 +23,6 @@ class AddOrder extends Component {
             cartItems: [],
             totalAmount:0.0
         }
-
-
     }
 
     componentDidMount() {
@@ -79,9 +76,9 @@ class AddOrder extends Component {
                 {
                     bankName: "",
                     cardNumber: "",
-                    expiryMonth: 6,
-                    expiryYear: 2025,
-                    cvc: 123,
+                    expiryMonth: 0,
+                    expiryYear: 0,
+                    cvc: 0,
                     holderName: ""
                 }
         });
@@ -169,7 +166,7 @@ class AddOrder extends Component {
                         </form>
                     </div>
                 </div>
-                <Mascotball top="68%" right="1%" />
+                <MascotBall top="68%" right="1%" />
                 <Ball className="green-ball" top="8%" left="5%" />
                 <Ball className="yellow-ball" left="15%" bottom="20%" />
                 <Ball className="blue-ball" right="13%" top="-5%" />

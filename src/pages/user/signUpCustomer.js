@@ -54,7 +54,7 @@ class SignUpCustomer extends Component {
             shoppingCart:{
                 totalNumberOfBooks: 0,
                 orders: null,
-                GrandTotal: null
+                grandTotal: 0.0
             }
         });
     };
@@ -92,14 +92,14 @@ class SignUpCustomer extends Component {
                             />
                             <InputField
                                 type="text"
-                                name={"username"}
-                                labeltext="Användarnamn"
+                                name={"email"}
+                                labeltext="e-post"
                                 onChange={this.handleChange}
                             />
                             <InputField
                                 type="text"
-                                name={"email"}
-                                labeltext="e-post"
+                                name={"username"}
+                                labeltext="Användarnamn"
                                 onChange={this.handleChange}
                             />
                             <InputField
@@ -110,7 +110,7 @@ class SignUpCustomer extends Component {
                             />
                             <div
                                 className="create-btn-holder">
-                                <button onClick={this.handleSubmit} className="btn primary-Btn text-light">SKAPA</button>
+                                <button onClick={this.handleSubmit} disabled={!this.state.username && !this.state.password} className="btn primary-Btn text-light">SKAPA</button>
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
