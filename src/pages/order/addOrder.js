@@ -20,7 +20,7 @@ class AddOrder extends Component {
         }
 
         this.state = {
-            shoppingCart: []
+            cartItems: []
         }
     }
 
@@ -83,26 +83,30 @@ class AddOrder extends Component {
     };
 
     render() {
-        const {shoppingCart} = this.state;
+        const {cartItems} = this.state;
         return(
             <div className="window-container">
                 <div className="create-container">
                     <div className="frostedGlass">
                         <div className={"order-body"}>
-                            {shoppingCart.map((cartItem, index) => {
+                            {cartItems.map((cartItem, index) => {
                                 return <div key={index}>
-                                    ISBN: {cartItem.isbn13 || 'ISBN'}
+                                    ISBN: {cartItem.bookIsbn || 'ISBN'}
                                     <br/>
-                                    TITEL: {cartItem.title || 'TITEL'}
+                                    TITEL: {cartItem.bookTitle || 'TITEL'}
                                     <br/>
                                     MÄNGD: {cartItem.qty || 'MÄNGD'}
                                     <br/>
-                                    PRIS: {cartItem.price || 'PRIS'}
+                                    PRIS: {cartItem.subtotal || 'PRIS'}
                                     <br/>
-                                    TOTAL BELOPP: {cartItem.shoppingCart || 'TOTAL BELOPP'}
+                                    TOTALET BELOPP:{cartItem.shoppingCart.grandTotal || 'TOTALT BELOPP'}
                                 </div>
                             })}
                         </div>
+
+
+
+
                         <form className="create-form" onSubmit={this.handleSubmit}>
                             <h3 className="headline">Fyll i transporteringsmetoden</h3>
                             <InputField

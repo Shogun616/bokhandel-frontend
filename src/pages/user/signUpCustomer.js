@@ -18,8 +18,9 @@ class SignUpCustomer extends Component {
             email: "",
             password: "",
             shoppingCart:{
-                price:0.0,
-                qty:0
+                totalNumberOfBooks: 0,
+                orders: null,
+                grandTotal: 0.0
             }
         }
     }
@@ -51,8 +52,9 @@ class SignUpCustomer extends Component {
             email: "",
             password: "",
             shoppingCart:{
-                price:0.0,
-                qty:0
+                totalNumberOfBooks: 0,
+                orders: null,
+                GrandTotal: null
             }
         });
     };
