@@ -19,7 +19,7 @@ function Start() {
             books[books.indexOf(books.find((b) => b.id === book.id))];
         console.log("bookToSubmit", bookToSubmit);
 
-        api.post('shoppingcart/addbooks?qty='+bookToSubmit.qty+'&username='+localStorage.getItem("username")+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
+        api.post('shoppingcart/addbooks?qty='+bookToSubmit.numOfCopies+'&username='+localStorage.getItem("username")+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 console.log(response.data)
@@ -45,7 +45,7 @@ function Start() {
 
         newBooks[books.indexOf(books.find((b) => b.id === id))] = {
             ...books[books.indexOf(books.find((b) => b.id === id))],
-            ...{ qty: val }
+            ...{ numOfCopies: val }
         };
         setBooks(newBooks);
         //setNumberOfCopies(qtyIndex);
@@ -59,7 +59,7 @@ function Start() {
             .then((data) =>
                 setBooks(
                     data.map((b) => {
-                        return { ...b, ...{ qty: 0 } };
+                        return { ...b, ...{ numOfCopies: 0 } };
                     })
                 )
             )

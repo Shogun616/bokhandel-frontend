@@ -4,6 +4,7 @@ import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import Mascotball from "../../components/ball/Mascotball";
 import Ball from "../../components/ball/Ball";
+import * as respone from "autoprefixer";
 
 class AddOrder extends Component {
     constructor(props) {
@@ -20,8 +21,11 @@ class AddOrder extends Component {
         }
 
         this.state = {
-            cartItems: []
+            cartItems: [],
+            totalAmount:0.0
         }
+
+
     }
 
     componentDidMount() {
@@ -33,7 +37,8 @@ class AddOrder extends Component {
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 this.setState({cartItems: response.data});
-                console.log(response.data)
+                this.setState({totalAmount:response.data[0].shoppingCart.grandTotal})
+                console.log(response.data[0].shoppingCart.grandTotal)
             })
             .catch(error => {
                 console.log(error)
@@ -98,15 +103,13 @@ class AddOrder extends Component {
                                     MÄNGD: {cartItem.qty || 'MÄNGD'}
                                     <br/>
                                     PRIS: {cartItem.subtotal || 'PRIS'}
-                                    <br/>
-                                    TOTALET BELOPP:{cartItem.shoppingCart.grandTotal || 'TOTALT BELOPP'}
                                 </div>
                             })}
                         </div>
 
-
-
-
+                        <div className={"order-body"}>
+                            TOTALT BELOPP: {this.state.totalAmount|| 'TOTALT BELOPP'}
+                        </div>
                         <form className="create-form" onSubmit={this.handleSubmit}>
                             <h3 className="headline">Fyll i transporteringsmetoden</h3>
                             <InputField
