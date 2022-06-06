@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Header.css';
+import './header.css';
 
 function Header() {
 
@@ -20,8 +20,8 @@ function Header() {
             </a>
             <form className={"form-inline my-2 my-lg-0"}>
                 <a onClick={() => logout()}
-                   className={"btn btn-outline-success my-2 my-sm-0 login-Btn"}
-                   href={"/login/admin"}>LOGGA UT</a>
+                   className={"btn btn-outline-success my-2 my-sm-0 login-Btn text-light"}
+                >LOGGA UT</a>
             </form>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import api from "../../components/service/api";
-import InputField from "../../components/UI/InputFieldText";
+import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './user.css';
 import Mascotball from "../../components/ball/Mascotball";
@@ -68,7 +68,7 @@ class LogInAdmin extends Component {
                             />
                             <div
                                 className="create-btn-holder">
-                                <button onClick={this.handleSubmit} className="btn primary-Btn text-light">SKAPA</button>
+                                <button onClick={this.handleSubmit} className="btn primary-Btn text-light">LOGGA IN</button>
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>

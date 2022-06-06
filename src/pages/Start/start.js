@@ -1,6 +1,6 @@
-import Header from "../../components/navBar/Header";
+import Header from "../../components/navBar/header";
 import {Table} from "semantic-ui-react";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import api from "../../components/service/api";
 import Ball from "../../components/ball/Ball";
 import MascotBall from "../../components/ball/Mascotball";
@@ -13,15 +13,12 @@ function Start() {
     const [books, setBooks] = useState(null);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(false);
-    //const isMounted = useRef(false);
 
     function handleOnCLick(book) {
         const bookToSubmit =
             books[books.indexOf(books.find((b) => b.id === book.id))];
         console.log("bookToSubmit", bookToSubmit);
 
-        ///HERE WE CALL API.
-        /// paste in the url-> bookToSubmit.id   and bookToSubmit.qty and done!
         api.post('shoppingcart/addbooks?qty='+bookToSubmit.qty+'&username='+localStorage.getItem("username")+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
@@ -98,7 +95,6 @@ function Start() {
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
-
                             {books.map((book, index) => {
                                 return (
                                     <Table.Row className="bottomRow text-light" key={index}>
@@ -133,10 +129,10 @@ function Start() {
                                             </select>
                                         </Table.Cell>
                                         <Table.Cell >
-                                            <button onClick={() => handleOnCLick(book)} className="btn btn-outline-success my-2 my-sm-0 login-Btn">LÄGG TILL</button>
+                                            <button onClick={() => handleOnCLick(book)} className="btn primary-Btn">LÄGG TILL</button>
                                         </Table.Cell>
                                         <Table.Cell>
-                                            <button onClick={() => deleteCartItem()} className="btn btn-outline-success my-2 my-sm-0 login-Btn">TA BORT</button>
+                                            <button onClick={() => deleteCartItem()} className="btn primary-Btn">TA BORT</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )
@@ -166,32 +162,3 @@ function Start() {
 }
 
 export default Start;
-
-
-// const handleChange = (e) => {
-//     this.setState({ [e.target.name]: e.target.value });
-// };
-// const handleSubmit = async (event) =>{
-// event.preventDefault();
-//     await api.put(`shoppingcart/addbooks/bookid/{data.id}/username/${localStorage.getItem("username")}/{qty}`,
-//         {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
-//         .then((response) => response.data)
-//         .then(setBook)
-//         .then(() => setLoading(false))
-//         .catch(setError);
-// }
-
-
-// useEffect(() => {
-//    //console.log(selectedBook.id);
-//     if(isMounted.current){
-//     api.put('shoppingcart/addbooks/?qty='+1+'&username='+localStorage.getItem("username")+'&bookid='+selectedBook.id,
-//         {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
-//         .then((response) => response.data)
-//         //.then(setBooks)
-//         .then(() => setLoading(false))
-//         .catch(setError);
-//     } else {
-//         isMounted.current = true;
-//     }
-// }, [handleOnCLick,setSlectedBook])

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import api from "../../components/service/api";
-import InputField from "../../components/UI/InputFieldText";
+import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './book.css'
 import Mascotball from "../../components/ball/Mascotball";

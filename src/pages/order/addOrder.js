@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import api from "../../components/service/api";
-import InputField from "../../components/UI/InputFieldText";
+import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import Mascotball from "../../components/ball/Mascotball";
 import Ball from "../../components/ball/Ball";
@@ -18,6 +18,27 @@ class AddOrder extends Component {
             paymentCvc: 0,
             paymentHolderName: ""
         }
+
+        this.state = {
+            shoppingCart: []
+        }
+    }
+
+    componentDidMount() {
+        this.getAllCartItems();
+    }
+
+    getAllCartItems(){
+        api.get('shoppingcart/getCartItemList?shoppingCartId=' + localStorage.getItem('shoppingCartId'),
+            {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
+            .then(response => {
+                this.setState({cartItems: response.data});
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+                this.setState({errorMsg: 'Error retrieving data'})
+            })
     }
 
     handleChange = (e) => {
@@ -29,7 +50,7 @@ class AddOrder extends Component {
 
         const ObjToSend= {
             shippingMethod: this.state.shippingMethod, shippingAddress:this.state.shippingAddress,
-            payment:{bankName: this.state.paymentBankName, cardNumber: this.state.paymentCardNumber,
+            payment: {bankName: this.state.paymentBankName, cardNumber: this.state.paymentCardNumber,
             expiryMonth: this.state.paymentExpiryMonth, expiryYear: this.state.paymentExpiryYear,
             cvc: this.state.paymentCvc, holderName: this.state.paymentHolderName}
         }
@@ -62,10 +83,26 @@ class AddOrder extends Component {
     };
 
     render() {
+        const {shoppingCart} = this.state;
         return(
             <div className="window-container">
                 <div className="create-container">
                     <div className="frostedGlass">
+                        <div className={"order-body"}>
+                            {shoppingCart.map((cartItem, index) => {
+                                return <div key={index}>
+                                    ISBN: {cartItem.isbn13 || 'ISBN'}
+                                    <br/>
+                                    TITEL: {cartItem.title || 'TITEL'}
+                                    <br/>
+                                    MÄNGD: {cartItem.qty || 'MÄNGD'}
+                                    <br/>
+                                    PRIS: {cartItem.price || 'PRIS'}
+                                    <br/>
+                                    TOTAL BELOPP: {cartItem.shoppingCart || 'TOTAL BELOPP'}
+                                </div>
+                            })}
+                        </div>
                         <form className="create-form" onSubmit={this.handleSubmit}>
                             <h3 className="headline">Fyll i transporteringsmetoden</h3>
                             <InputField

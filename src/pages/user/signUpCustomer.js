@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import api from "../../components/service/api";
 import {Link, useNavigate} from "react-router-dom";
-import InputField from "../../components/UI/InputFieldText";
+import InputField from "../../components/UI/inputFieldText";
 import './user.css';
 import Mascotball from "../../components/ball/Mascotball";
 import Ball from "../../components/ball/Ball";
