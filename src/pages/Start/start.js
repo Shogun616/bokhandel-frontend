@@ -6,6 +6,7 @@ import Ball from "../../components/ball/Ball";
 import MascotBall from "../../components/ball/Mascotball";
 import * as response from "autoprefixer";
 import {useNavigate} from "react-router-dom";
+import * as book from "postcss-selector-parser";
 
 function Start() {
 
@@ -19,19 +20,29 @@ function Start() {
             books[books.indexOf(books.find((b) => b.id === book.id))];
         console.log("bookToSubmit", bookToSubmit);
 
-        api.post('shoppingcart/addbooks?qty='+bookToSubmit.numOfCopies+'&username='+localStorage.getItem("username")+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
+        api.post('shoppingcart/addbooks?qty='+bookToSubmit.numOfCopies+'&username='+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 console.log(response.data)
-                localStorage.setItem("cartItemId", JSON.stringify(response.data.id))
-                localStorage.setItem("shoppingCartId",JSON.stringify(response.data.shoppingCart.id))
+                //localStorage.setItem("cartItemId", JSON.stringify(response.data.id))
+                //localStorage.setItem("shoppingCartId",JSON.stringify(response.data.shoppingCart.id))
             })
             .catch(setError);
         if(response.data!==null) alert("Boken är nu Inlagt i varukorgen.")
     }
 
-    function deleteCartItem() {
-        api.delete('shoppingcart/removecartItem?cartItemId='+localStorage.getItem("cartItemId"),
+    // function deleteCartItem() {
+    //     api.delete('shoppingcart/removecartItem?cartItemId='+localStorage.getItem("cartItemId"),
+    //         {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
+    //         .then(() => {
+    //             alert("Boken är nu Borttaget!");
+    //             navigate("/start");
+    //         })
+    //         .catch(setError);
+    // }
+
+    function deleteCartItem1(book) {
+        api.delete('shoppingcart/removecartItem1?username='+'&bookid='+book.id,
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(() => {
                 alert("Boken är nu Borttaget!");
@@ -132,7 +143,7 @@ function Start() {
                                             <button onClick={() => handleOnCLick(book)} className="btn primary-Btn">LÄGG TILL</button>
                                         </Table.Cell>
                                         <Table.Cell>
-                                            <button onClick={() => deleteCartItem()} className="btn primary-Btn">TA BORT</button>
+                                            <button onClick={() => deleteCartItem1(book)} className="btn primary-Btn">TA BORT</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )

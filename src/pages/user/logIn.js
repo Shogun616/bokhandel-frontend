@@ -42,7 +42,7 @@ class LogIn extends Component {
                 console.log(response.data)
                 localStorage.setItem("jwt", JSON.stringify(response.data.access_token))
                 localStorage.setItem("jwt_refresh", JSON.stringify(response.data.refresh_token))
-                localStorage.setItem("username",this.state.username)
+                //localStorage.setItem("username",this.state.username)
 
                      this.setState(response.data);
                      this.props.navigate("/start");

@@ -7,9 +7,11 @@ function Header() {
     const navigate = useNavigate();
 
     const logout = () =>{
-        localStorage.removeItem("username");
+        //localStorage.removeItem("username");
         localStorage.removeItem("jwt");
         localStorage.removeItem("jwt_refresh");
+        //localStorage.removeItem("shoppingCartId");
+        //localStorage.remove("cartItemId")
         navigate("/");
     }
 

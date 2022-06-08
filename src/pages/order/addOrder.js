@@ -29,11 +29,25 @@ class AddOrder extends Component {
     }
 
     componentDidMount() {
-        this.getAllCartItems();
+        this.getAllCartItems1();
     }
 
-    getAllCartItems(){
-        api.get('shoppingcart/getCartItemList?shoppingCartId=' + localStorage.getItem('shoppingCartId'),
+    // getAllCartItems(){
+    //     api.get('shoppingcart/getCartItemList?shoppingCartId=' + localStorage.getItem('shoppingCartId'),
+    //         {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
+    //         .then(response => {
+    //             this.setState({cartItems: response.data});
+    //             this.setState({totalAmount:response.data[0].shoppingCart.grandTotal})
+    //             console.log(response.data[0].shoppingCart.grandTotal)
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //             this.setState({errorMsg: 'Error retrieving data'})
+    //         })
+    // }
+
+    getAllCartItems1(){
+        api.get('shoppingcart/getCartItemList1',
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 this.setState({cartItems: response.data});
@@ -45,6 +59,7 @@ class AddOrder extends Component {
                 this.setState({errorMsg: 'Error retrieving data'})
             })
     }
+
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -60,7 +75,7 @@ class AddOrder extends Component {
             cvc: this.state.paymentCvc, holderName: this.state.paymentHolderName}
         }
 
-        await api.post('orders/createorder/username?username='+ localStorage.getItem("username"), ObjToSend,
+        await api.post('orders/createorder', ObjToSend,
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 this.setState(response.data);
