@@ -7,7 +7,6 @@ import MascotBall from "../../components/ball/Mascotball";
 import * as response from "autoprefixer";
 import {useNavigate} from "react-router-dom";
 
-
 function Start() {
 
     const navigate = useNavigate();
@@ -25,23 +24,10 @@ function Start() {
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 console.log(response.data)
-                //localStorage.setItem("cartItemId", JSON.stringify(response.data.id))
-                //localStorage.setItem("shoppingCartId",JSON.stringify(response.data.shoppingCart.id))
             })
             .catch(setError);
         if(response.data!==null) alert("Boken är nu Inlagt i varukorgen.")
     }
-
-
-    // function deleteCartItem() {
-    //     api.delete('shoppingcart/removecartItem?cartItemId='+localStorage.getItem("cartItemId"),
-    //         {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
-    //         .then(() => {
-    //             alert("Boken är nu Borttaget!");
-    //             navigate("/start");
-    //         })
-    //         .catch(setError);
-    // }
 
     function deleteCartItem1(book) {
         api.delete('shoppingcart/removecartItem1?bookid='+book.id,
@@ -149,8 +135,7 @@ function Start() {
                                             <button onClick={() => handleOnCLick(book)} disabled={disabled} className="btn primary-Btn">LÄGG TILL</button>
                                         </Table.Cell>
                                         <Table.Cell>
-                                            <button onClick={() => deleteCartItem1(book)}disabled={disabled}   className="btn primary-Btn">TA BORT</button>
-                                            {/*<button onClick={() => deleteCartItem()} disabled={disabled} className="btn primary-Btn">TA BORT</button>*/}
+                                            <button onClick={() => deleteCartItem1(book)} disabled={disabled} className="btn primary-Btn">TA BORT</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )
@@ -180,4 +165,3 @@ function Start() {
 }
 
 export default Start;
-
