@@ -21,7 +21,7 @@ function Start() {
             books[books.indexOf(books.find((b) => b.id === book.id))];
         console.log("bookToSubmit", bookToSubmit);
 
-        api.post('shoppingcart/addbooks?qty='+bookToSubmit.numOfCopies+'&username='+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
+        api.post('shoppingcart/addbooks?qty='+bookToSubmit.numOfCopies+'&bookid='+bookToSubmit.id,{dummy:"dummyData"},
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 console.log(response.data)
@@ -44,8 +44,7 @@ function Start() {
     // }
 
     function deleteCartItem1(book) {
-        api.delete('shoppingcart/removecartItem1&bookid='+book.id,
-
+        api.delete('shoppingcart/removecartItem1?bookid='+book.id,
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(() => {
                 alert("Boken är nu Borttaget!");
@@ -150,8 +149,8 @@ function Start() {
                                             <button onClick={() => handleOnCLick(book)} disabled={disabled} className="btn primary-Btn">LÄGG TILL</button>
                                         </Table.Cell>
                                         <Table.Cell>
-                                            <button onClick={() => deleteCartItem1(book)} className="btn primary-Btn">TA BORT</button>
-                                            <button onClick={() => deleteCartItem()} disabled={disabled} className="btn primary-Btn">TA BORT</button>
+                                            <button onClick={() => deleteCartItem1(book)}disabled={disabled}   className="btn primary-Btn">TA BORT</button>
+                                            {/*<button onClick={() => deleteCartItem()} disabled={disabled} className="btn primary-Btn">TA BORT</button>*/}
                                         </Table.Cell>
                                     </Table.Row>
                                 )
