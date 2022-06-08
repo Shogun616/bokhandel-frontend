@@ -18,6 +18,7 @@ function Header() {
     return (
         <div className={"container"}>
             <a className={"navbar-brand"} href={"/start"}>
+                <img className={"navLogo"} src={"/img.png"} alt={"Vemasy logga"}/>
                 <span className={"navTitle"}>BOKHANDEL </span>
             </a>
             <form className={"form-inline my-2 my-lg-0"}>

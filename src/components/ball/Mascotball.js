@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './img.png';
+import Logo from './image-of-open-antique-book-on-wooden-table-with-glitter-overlay-picture-id873507500.jpg';
 import './Ball.css';
 
 function MascotBall (props) {
@@ -13,7 +13,7 @@ function MascotBall (props) {
     }
     return (
         <div className="Mascot-ball" style={styles}>
-            <img src={Logo} alt="Shaya Solutions Logotype" className="Logotype-ball" />
+            <img src={Logo} alt="Book Logotype" className="Logotype-ball" />
         </div>
     )
 }

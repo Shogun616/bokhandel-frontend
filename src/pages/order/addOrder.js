@@ -1,10 +1,11 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
 import api from "../../components/service/api";
 import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
-import Mascotball from "../../components/ball/Mascotball";
+import MascotBall from "../../components/ball/Mascotball";
 import Ball from "../../components/ball/Ball";
-import * as respone from "autoprefixer";
+import './order.css'
+import {Table} from "semantic-ui-react";
 
 class AddOrder extends Component {
     constructor(props) {
@@ -24,8 +25,6 @@ class AddOrder extends Component {
             cartItems: [],
             totalAmount:0.0
         }
-
-
     }
 
     componentDidMount() {
@@ -79,7 +78,7 @@ class AddOrder extends Component {
             {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('jwt'))}})
             .then(response => {
                 this.setState(response.data);
-                this.props.navigate("/orderBekraftelse");
+                this.props.navigate("/order/bekraftelse");
             })
             .catch(error => {
                 console.log(error)
@@ -94,9 +93,9 @@ class AddOrder extends Component {
                 {
                     bankName: "",
                     cardNumber: "",
-                    expiryMonth: 6,
-                    expiryYear: 2025,
-                    cvc: 123,
+                    expiryMonth: 0,
+                    expiryYear: 0,
+                    cvc: 0,
                     holderName: ""
                 }
         });
@@ -106,25 +105,33 @@ class AddOrder extends Component {
         const {cartItems} = this.state;
         return(
             <div className="window-container">
-                <div className="create-container">
+                <div className="order-container">
                     <div className="frostedGlass">
-                        <div className={"order-body"}>
-                            {cartItems.map((cartItem, index) => {
-                                return <div key={index}>
-                                    ISBN: {cartItem.bookIsbn || 'ISBN'}
-                                    <br/>
-                                    TITEL: {cartItem.bookTitle || 'TITEL'}
-                                    <br/>
-                                    MÄNGD: {cartItem.qty || 'MÄNGD'}
-                                    <br/>
-                                    PRIS: {cartItem.subtotal || 'PRIS'}
-                                </div>
-                            })}
-                        </div>
+                        <div className={"order-box-container"}>
+                        <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>ISBN</Table.HeaderCell>
+                                    <Table.HeaderCell>Titel</Table.HeaderCell>
+                                    <Table.HeaderCell>MÄNGD</Table.HeaderCell>
+                                    <Table.HeaderCell>PRIS</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {cartItems.map((cartItem, index) => {
+                                    return (
+                                        <Table.Row className="bottomRow text-light" key={index}>
+                                            <Table.Cell>{cartItem.bookIsbn || 'ISBN'}</Table.Cell>
+                                            <Table.Cell>{cartItem.bookTitle || 'TITEL'}</Table.Cell>
+                                            <Table.Cell>{cartItem.qty + ' ST' || 'MÄNGD'}</Table.Cell>
+                                            <Table.Cell>{cartItem.subtotal + ' KR' || 'PRIS'}</Table.Cell>
+                                        </Table.Row>
+                                    )
+                                })}
+                                <div className={'order-body'}>{'Totalt Belopp: ' + this.state.totalAmount + ' KR' || 'TOTALT BELOPP'}</div>
+                            </Table.Body>
+                        </Table>
 
-                        <div className={"order-body"}>
-                            TOTALT BELOPP: {this.state.totalAmount|| 'TOTALT BELOPP'}
-                        </div>
                         <form className="create-form" onSubmit={this.handleSubmit}>
                             <h3 className="headline">Fyll i transporteringsmetoden</h3>
                             <InputField
@@ -178,13 +185,14 @@ class AddOrder extends Component {
                             />
                             <div
                                 className="create-btn-holder">
-                                <button onClick={this.handleSubmit} className="btn primary-Btn text-light">BEKRÄFTA</button>
+                                <button onClick={this.handleSubmit} disabled={!this.state.paymentHolderName && !this.state.cvc} className="btn primary-Btn text-light">BEKRÄFTA</button>
                                 <Link to={"/start"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
+                        </div>
                     </div>
                 </div>
-                <Mascotball top="68%" right="1%" />
+                <MascotBall top="68%" right="1%" />
                 <Ball className="green-ball" top="8%" left="5%" />
                 <Ball className="yellow-ball" left="15%" bottom="20%" />
                 <Ball className="blue-ball" right="13%" top="-5%" />
