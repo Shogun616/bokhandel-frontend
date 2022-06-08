@@ -29,7 +29,7 @@ class SignUpEmployee extends Component {
         await api.post(`user/signup/employee`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.navigate("/registeringsBekraftelse");
+                this.props.navigate("/registerings/bekraftelse");
             })
             .catch(error => {
                 console.log(error)

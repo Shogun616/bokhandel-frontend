@@ -7,7 +7,6 @@ import SignUpCustomer from "./pages/user/signUpCustomer";
 import SignUpEmployee from "./pages/user/signUpEmployee";
 import Start from "./pages/Start/start";
 import AddBook from "./pages/book/addBook";
-import DeleteCartItem from "./pages/shoppingCart/DeleteCartItem";
 import AddOrder from "./pages/order/addOrder";
 import ConfirmRegister from "./pages/confirm/confirmRegister";
 import ConfirmOrder from "./pages/confirm/confirmOrder";
@@ -27,11 +26,11 @@ function App() {
                 <Route path={'/registera/admin'} element={<SignUpEmployee />}/>
                 <Route path={'/start'} element={<Start />}/>
                 <Route path={'/start/admin'} element={<StartAdmin />}/>
-                <Route path={'/laggTillBok'} element={<AddBook />}/>
-                <Route path={'/taBortVarukorg'} element={<DeleteCartItem />}/>
+                <Route path={'/skapa/bok'} element={<AddBook />}/>
+                {/*<Route path={'/taBortVarukorg'} element={<DeleteCartItem />}/>*/}
                 <Route path={'/skapa/order'} element={<AddOrder />}/>
-                <Route path={'/registeringsBekraftelse'} element={<ConfirmRegister />}/>
-                <Route path={'/orderBekraftelse'} element={<ConfirmOrder />}/>
+                <Route path={'/registerings/bekraftelse'} element={<ConfirmRegister />}/>
+                <Route path={'/order/bekraftelse'} element={<ConfirmOrder />}/>
             </Routes>
         </Router>
     </div>

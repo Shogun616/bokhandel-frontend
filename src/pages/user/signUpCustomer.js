@@ -35,7 +35,7 @@ class SignUpCustomer extends Component {
         await api.post(`user/signup/customer`, this.state)
             .then(response => {
                 this.setState(response.data);
-                this.props.navigate("/registeringsBekraftelse");
+                this.props.navigate("/registerings/bekraftelse");
             })
             .catch(error => {
                 console.log(error)

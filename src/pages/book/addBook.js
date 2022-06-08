@@ -3,7 +3,7 @@ import api from "../../components/service/api";
 import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './book.css'
-import Mascotball from "../../components/ball/Mascotball";
+import MascotBall from "../../components/ball/Mascotball";
 import Ball from "../../components/ball/Ball";
 
 class AddBook extends Component {
@@ -163,13 +163,13 @@ class AddBook extends Component {
                             />
                             <div
                                 className="create-btn-holder">
-                                <button onClick={this.handleSubmit} disabled={!this.state.name} className="btn primary-Btn text-light">SKAPA</button>
+                                <button onClick={this.handleSubmit} disabled={!this.state.stockQuantity} className="btn primary-Btn text-light">SKAPA</button>
                                 <Link to={"/"} className="btn secondary-Btn text-dark" onClick={this.handleCancel}>AVBRYT</Link>
                             </div>
                         </form>
                     </div>
                 </div>
-                <Mascotball top="68%" right="1%" />
+                <MascotBall top="68%" right="1%" />
                 <Ball className="green-ball" top="8%" left="5%" />
                 <Ball className="yellow-ball" left="15%" bottom="20%" />
                 <Ball className="blue-ball" right="13%" top="-5%" />

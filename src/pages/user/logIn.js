@@ -4,19 +4,7 @@ import InputField from "../../components/UI/inputFieldText";
 import {Link, useNavigate} from "react-router-dom";
 import './user.css';
 import MascotBall from "../../components/ball/Mascotball";
-import * as PropTypes from "prop-types";
-import Mascotball from "../../components/ball/Mascotball";
 import Ball from "../../components/ball/Ball";
-
-function Boll(props) {
-    return null;
-}
-
-Boll.propTypes = {
-    top: PropTypes.string,
-    left: PropTypes.string,
-    className: PropTypes.string
-};
 
 class LogIn extends Component {
 
@@ -87,7 +75,7 @@ class LogIn extends Component {
                         </form>
                     </div>
                 </div>
-                <Mascotball top="68%" right="1%" />
+                <MascotBall top="68%" right="1%" />
                 <Ball className="green-ball" top="8%" left="5%" />
                 <Ball className="yellow-ball" left="15%" bottom="20%" />
                 <Ball className="blue-ball" right="13%" top="-5%" />
